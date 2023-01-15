@@ -18,6 +18,7 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "tim.h"
 #include "usart.h"
 #include "gpio.h"
 
@@ -25,6 +26,7 @@
 /* USER CODE BEGIN Includes */
 #include "lcd.h"
 #include "stm32f7xx_hal.h"
+#include "DS18B20.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -34,6 +36,7 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
+float temp = 0;
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -87,7 +90,10 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_USART3_UART_Init();
+  MX_TIM6_Init();
   /* USER CODE BEGIN 2 */
+
+
   Lcd_PortType ports[] = {
  		  D4_GPIO_Port, D5_GPIO_Port, D6_GPIO_Port, D7_GPIO_Port
   };
@@ -96,14 +102,35 @@ int main(void)
   Lcd_HandleTypeDef lcd = Lcd_create(ports, pins, RS_GPIO_Port, RS_Pin, EN_GPIO_Port, EN_Pin, LCD_4_BIT_MODE);
 
 
+  if (ds18b20_init() != HAL_OK) {
+    Error_Handler();
+  }
+
+  uint8_t ds1[DS18B20_ROM_CODE_SIZE];
+
+  if (ds18b20_read_address(ds1) != HAL_OK) {
+    Error_Handler();
+  }
+
+  Lcd_cursor(&lcd, 0,1);
+  Lcd_string(&lcd, "TEMP: ");
+
+
   /* USER CODE END 2 */
-  	  Lcd_cursor(&lcd, 0,3);
-	  Lcd_string(&lcd, "Hello World");
+
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+	  Lcd_cursor(&lcd, 0,7);
+	  ds18b20_start_measure(NULL);
+
+	  HAL_Delay(750);
+
+	  temp = ds18b20_get_temp(NULL);
+	  Lcd_int(&lcd, temp);
     /* USER CODE END WHILE */
+
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */

@@ -1,0 +1,9 @@
+../Components/Src/1wire.c:5:19:wire_init	8	static
+../Components/Src/1wire.c:10:13:delay_us	16	static
+../Components/Src/1wire.c:17:19:wire_reset	16	static
+../Components/Src/1wire.c:34:12:read_bit	16	static
+../Components/Src/1wire.c:46:9:wire_read	16	static
+../Components/Src/1wire.c:58:13:write_bit	16	static
+../Components/Src/1wire.c:73:6:wire_write	24	static
+../Components/Src/1wire.c:82:16:byte_crc	24	static
+../Components/Src/1wire.c:95:9:wire_crc	24	static

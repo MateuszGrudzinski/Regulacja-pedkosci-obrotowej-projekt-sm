@@ -66,12 +66,19 @@ void Lcd_init(Lcd_HandleTypeDef * lcd)
 /**
  * Write a number on the current position
  */
-void Lcd_int(Lcd_HandleTypeDef * lcd, int number)
+void Lcd_int(Lcd_HandleTypeDef * lcd, float number)
 {
 	char buffer[11];
-	sprintf(buffer, "%d", number);
-
-	Lcd_string(lcd, buffer);
+	char buffer_out[11];
+	sprintf(buffer, "%f", number);
+	int period = 0;
+	for(period = 0; period<sizeof(buffer); period++)
+	{
+		if(buffer[period] == '.')
+			break;
+	}
+	strncpy(buffer_out, buffer, period + 4);
+	Lcd_string(lcd, buffer_out);
 }
 
 /**

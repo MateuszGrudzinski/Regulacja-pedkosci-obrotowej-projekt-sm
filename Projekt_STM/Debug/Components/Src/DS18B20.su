@@ -1,0 +1,6 @@
+../Components/Src/DS18B20.c:14:19:ds18b20_init	8	static
+../Components/Src/DS18B20.c:18:19:ds18b20_read_address	32	static
+../Components/Src/DS18B20.c:37:26:send_cmd	24	static
+../Components/Src/DS18B20.c:54:19:ds18b20_start_measure	16	static
+../Components/Src/DS18B20.c:58:26:ds18b20_read_scratchpad	32	static
+../Components/Src/DS18B20.c:75:7:ds18b20_get_temp	32	static

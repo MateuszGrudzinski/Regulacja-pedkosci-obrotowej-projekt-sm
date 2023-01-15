@@ -5,12 +5,18 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
+../Components/Src/1wire.c \
+../Components/Src/DS18B20.c \
 ../Components/Src/lcd.c 
 
 OBJS += \
+./Components/Src/1wire.o \
+./Components/Src/DS18B20.o \
 ./Components/Src/lcd.o 
 
 C_DEPS += \
+./Components/Src/1wire.d \
+./Components/Src/DS18B20.d \
 ./Components/Src/lcd.d 
 
 
@@ -21,7 +27,7 @@ Components/Src/%.o Components/Src/%.su: ../Components/Src/%.c Components/Src/sub
 clean: clean-Components-2f-Src
 
 clean-Components-2f-Src:
-	-$(RM) ./Components/Src/lcd.d ./Components/Src/lcd.o ./Components/Src/lcd.su
+	-$(RM) ./Components/Src/1wire.d ./Components/Src/1wire.o ./Components/Src/1wire.su ./Components/Src/DS18B20.d ./Components/Src/DS18B20.o ./Components/Src/DS18B20.su ./Components/Src/lcd.d ./Components/Src/lcd.o ./Components/Src/lcd.su
 
 .PHONY: clean-Components-2f-Src
 
