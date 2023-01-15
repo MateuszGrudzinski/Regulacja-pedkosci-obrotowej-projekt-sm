@@ -23,7 +23,8 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "lcd.h"
+#include "stm32f7xx_hal.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -87,15 +88,22 @@ int main(void)
   MX_GPIO_Init();
   MX_USART3_UART_Init();
   /* USER CODE BEGIN 2 */
+  Lcd_PortType ports[] = {
+ 		  D4_GPIO_Port, D5_GPIO_Port, D6_GPIO_Port, D7_GPIO_Port
+  };
+  Lcd_PinType pins[] = {D4_Pin, D5_Pin, D6_Pin, D7_Pin};
+
+  Lcd_HandleTypeDef lcd = Lcd_create(ports, pins, RS_GPIO_Port, RS_Pin, EN_GPIO_Port, EN_Pin, LCD_4_BIT_MODE);
+
 
   /* USER CODE END 2 */
-
+  	  Lcd_cursor(&lcd, 0,3);
+	  Lcd_string(&lcd, "Hello World");
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
     /* USER CODE END WHILE */
-
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
