@@ -36,7 +36,23 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
+int tach_cnt = 0;
+int rpm = 0;
 float temp = 0;
+
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+{
+  if(GPIO_Pin == TACH_Pin)
+	tach_cnt++;
+}
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+{
+  if(htim == &htim4)
+  {
+	  rpm = 60*tach_cnt;
+	  tach_cnt = 0;
+  }
+}
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -91,9 +107,9 @@ int main(void)
   MX_GPIO_Init();
   MX_USART3_UART_Init();
   MX_TIM6_Init();
+  MX_TIM3_Init();
+  MX_TIM4_Init();
   /* USER CODE BEGIN 2 */
-
-
   Lcd_PortType ports[] = {
  		  D4_GPIO_Port, D5_GPIO_Port, D6_GPIO_Port, D7_GPIO_Port
   };
@@ -112,23 +128,31 @@ int main(void)
     Error_Handler();
   }
 
-  Lcd_cursor(&lcd, 0,1);
-  Lcd_string(&lcd, "TEMP: ");
-
-
+  HAL_TIM_PWM_Start(&htim3,TIM_CHANNEL_1);
+  HAL_TIM_Base_Start_IT(&htim4);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  Lcd_cursor(&lcd, 0,7);
+
 	  ds18b20_start_measure(NULL);
 
 	  HAL_Delay(750);
 
 	  temp = ds18b20_get_temp(NULL);
-	  Lcd_int(&lcd, temp);
+
+	  Lcd_cursor(&lcd, 0,1);
+	  Lcd_string(&lcd, "TEMP: ");
+	  Lcd_cursor(&lcd, 0,7);
+	  Lcd_float(&lcd, temp);
+
+	  Lcd_cursor(&lcd, 1,1);
+	  Lcd_string(&lcd, "RPM: ");
+	  Lcd_cursor(&lcd, 1,7);
+	  Lcd_int(&lcd, rpm);
+
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

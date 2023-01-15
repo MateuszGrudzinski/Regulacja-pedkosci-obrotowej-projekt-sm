@@ -1,5 +1,6 @@
 "./Components/Src/1wire.o"
 "./Components/Src/DS18B20.o"
+"./Components/Src/fan.o"
 "./Components/Src/lcd.o"
 "./Core/Src/gpio.o"
 "./Core/Src/main.o"
