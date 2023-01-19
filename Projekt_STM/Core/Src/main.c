@@ -18,6 +18,7 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "adc.h"
 #include "tim.h"
 #include "usart.h"
 #include "gpio.h"
@@ -27,6 +28,7 @@
 #include "lcd.h"
 #include "stm32f7xx_hal.h"
 #include "DS18B20.h"
+#include "pid_controller_config.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -39,6 +41,9 @@
 int tach_cnt = 0;
 int rpm = 0;
 float temp = 0;
+int Duty = 20;
+int rpm_ref = 2500;
+float e = 0;
 
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
@@ -49,8 +54,11 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
   if(htim == &htim4)
   {
-	  rpm = 60*tach_cnt;
+	  rpm = 6*tach_cnt;
 	  tach_cnt = 0;
+	  __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, (uint32_t)(Duty));
+	  Duty = PID_GetOutput(&hpid1, rpm_ref, rpm);
+	  e = rpm_ref - rpm;
   }
 }
 /* USER CODE END PD */
@@ -74,6 +82,7 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+
 
 /* USER CODE END 0 */
 
@@ -109,6 +118,7 @@ int main(void)
   MX_TIM6_Init();
   MX_TIM3_Init();
   MX_TIM4_Init();
+  MX_ADC1_Init();
   /* USER CODE BEGIN 2 */
   Lcd_PortType ports[] = {
  		  D4_GPIO_Port, D5_GPIO_Port, D6_GPIO_Port, D7_GPIO_Port
@@ -136,11 +146,9 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-
 	  ds18b20_start_measure(NULL);
 
-	  HAL_Delay(750);
-
+	  HAL_Delay(5000);
 	  temp = ds18b20_get_temp(NULL);
 
 	  Lcd_cursor(&lcd, 0,1);
