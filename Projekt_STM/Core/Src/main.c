@@ -29,6 +29,7 @@
 #include "stm32f7xx_hal.h"
 #include "DS18B20.h"
 #include "pid_controller_config.h"
+#include "fan.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -60,36 +61,37 @@ void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim)
 {
 	if(htim == &htim2)
 	{
-		if (htim->Channel == HAL_TIM_ACTIVE_CHANNEL_1)
-		{
-			if (Is_First_Captured==0) // if the first rising edge is not captured
-			{
-				IC_Val1 = HAL_TIM_ReadCapturedValue(htim, TIM_CHANNEL_1); // read the first value
-				Is_First_Captured = 1;  // set the first captured as true
-			}
 
-			else   // If the first rising edge is captured, now we will capture the second edge
-			{
-				IC_Val2 = HAL_TIM_ReadCapturedValue(htim, TIM_CHANNEL_1);  // read second value
-
-				if (IC_Val2 > IC_Val1)
+				if (htim->Channel == HAL_TIM_ACTIVE_CHANNEL_1)
 				{
-					Difference = IC_Val2-IC_Val1;
+					if (Is_First_Captured==0) // if the first rising edge is not captured
+					{
+						IC_Val1 = HAL_TIM_ReadCapturedValue(htim, TIM_CHANNEL_1); // read the first value
+						Is_First_Captured = 1;  // set the first captured as true
+					}
+
+					else   // If the first rising edge is captured, now we will capture the second edge
+					{
+						IC_Val2 = HAL_TIM_ReadCapturedValue(htim, TIM_CHANNEL_1);  // read second value
+
+						if (IC_Val2 > IC_Val1)
+						{
+							Difference = IC_Val2-IC_Val1;
+						}
+
+						else if (IC_Val1 > IC_Val2)
+						{
+							Difference = (0xffffffff - IC_Val1) + IC_Val2;
+						}
+
+						float refClock = 72000000/(72);
+
+						frequency = refClock/Difference;
+						rpm = frequency*30;
+						__HAL_TIM_SET_COUNTER(htim, 0);  // reset the counter
+						Is_First_Captured = 0; // set it back to false
 				}
-
-				else if (IC_Val1 > IC_Val2)
-				{
-					Difference = (0xffffffff - IC_Val1) + IC_Val2;
-				}
-
-				float refClock = 72000000/(72);
-
-				frequency = refClock/Difference;
-				rpm = frequency*30;
-				__HAL_TIM_SET_COUNTER(htim, 0);  // reset the counter
-				Is_First_Captured = 0; // set it back to false
 			}
-		}
 	}
 }
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
@@ -219,13 +221,6 @@ int main(void)
   if (ds18b20_init() != HAL_OK) {
     Error_Handler();
   }
-
-  uint8_t ds1[DS18B20_ROM_CODE_SIZE];
-
-  if (ds18b20_read_address(ds1) != HAL_OK) {
-    Error_Handler();
-  }
-
   HAL_TIM_PWM_Start(&htim3,TIM_CHANNEL_1);
   HAL_TIM_Base_Start_IT(&htim4);
   HAL_TIM_Base_Start_IT(&htim7);
