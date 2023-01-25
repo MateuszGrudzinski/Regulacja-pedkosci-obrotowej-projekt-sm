@@ -33,34 +33,81 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
-
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-int tach_cnt = 0;
+
+
 int rpm = 0;
 float temp = 0;
-int Duty = 20;
-int rpm_ref = 2500;
+int Duty = 50;
+int rpm_ref = 2000;
 float e = 0;
+uint8_t rx_buffer[32];
+uint16_t msg_len;
+uint32_t IC_Val1 = 0;
+uint32_t IC_Val2 = 0;
+uint32_t Difference = 0;
+int Is_First_Captured = 0;
 
-void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+/* Measure Frequency */
+float frequency = 0;
+
+void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim)
 {
-  if(GPIO_Pin == TACH_Pin)
-	tach_cnt++;
+	if(htim == &htim2)
+	{
+		if (htim->Channel == HAL_TIM_ACTIVE_CHANNEL_1)
+		{
+			if (Is_First_Captured==0) // if the first rising edge is not captured
+			{
+				IC_Val1 = HAL_TIM_ReadCapturedValue(htim, TIM_CHANNEL_1); // read the first value
+				Is_First_Captured = 1;  // set the first captured as true
+			}
+
+			else   // If the first rising edge is captured, now we will capture the second edge
+			{
+				IC_Val2 = HAL_TIM_ReadCapturedValue(htim, TIM_CHANNEL_1);  // read second value
+
+				if (IC_Val2 > IC_Val1)
+				{
+					Difference = IC_Val2-IC_Val1;
+				}
+
+				else if (IC_Val1 > IC_Val2)
+				{
+					Difference = (0xffffffff - IC_Val1) + IC_Val2;
+				}
+
+				float refClock = 72000000/(72);
+
+				frequency = refClock/Difference;
+				rpm = frequency*30;
+				__HAL_TIM_SET_COUNTER(htim, 0);  // reset the counter
+				Is_First_Captured = 0; // set it back to false
+			}
+		}
+	}
 }
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
   if(htim == &htim4)
   {
-	  rpm = 6*tach_cnt;
-	  tach_cnt = 0;
 	  __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, (uint32_t)(Duty));
 	  Duty = PID_GetOutput(&hpid1, rpm_ref, rpm);
 	  e = rpm_ref - rpm;
   }
+  if(htim == &htim7)
+    {
+  	  uint8_t tx_buffer[64];
+  	  int resp_len = sprintf((char*)tx_buffer, "{ \"RPM\":%d, \"RPM_REF\":%d, \"Duty\":%d }\r", rpm, rpm_ref, Duty);
+  	  HAL_UART_Transmit(&huart3, tx_buffer, resp_len, 10);
+    }
 }
+
+
+
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -82,7 +129,14 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+{
+  if(huart == &huart3)
+  {
+      sscanf((char*)&rx_buffer[0], "%d", &rpm_ref);
+  }
+  HAL_UART_Receive_IT(&huart3, rx_buffer, msg_len);
+}
 
 /* USER CODE END 0 */
 
@@ -119,6 +173,8 @@ int main(void)
   MX_TIM3_Init();
   MX_TIM4_Init();
   MX_ADC1_Init();
+  MX_TIM2_Init();
+  MX_TIM7_Init();
   /* USER CODE BEGIN 2 */
   Lcd_PortType ports[] = {
  		  D4_GPIO_Port, D5_GPIO_Port, D6_GPIO_Port, D7_GPIO_Port
@@ -140,6 +196,10 @@ int main(void)
 
   HAL_TIM_PWM_Start(&htim3,TIM_CHANNEL_1);
   HAL_TIM_Base_Start_IT(&htim4);
+  HAL_TIM_Base_Start_IT(&htim7);
+  HAL_TIM_IC_Start_IT(&htim2, TIM_CHANNEL_1);
+  msg_len = strlen("0000\r");
+  HAL_UART_Receive_IT(&huart3, rx_buffer, msg_len);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -148,9 +208,9 @@ int main(void)
   {
 	  ds18b20_start_measure(NULL);
 
-	  HAL_Delay(5000);
+	  HAL_Delay(1000);
 	  temp = ds18b20_get_temp(NULL);
-
+	  Lcd_clear(&lcd);
 	  Lcd_cursor(&lcd, 0,1);
 	  Lcd_string(&lcd, "TEMP: ");
 	  Lcd_cursor(&lcd, 0,7);
