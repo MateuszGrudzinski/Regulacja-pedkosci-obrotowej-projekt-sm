@@ -40,10 +40,12 @@
 
 
 int rpm = 0;
+int rpm_ref_t = 0;
 float temp = 0;
 int Duty = 50;
 int rpm_ref = 2000;
 float e = 0;
+_Bool mode = 0;
 uint8_t rx_buffer[32];
 uint16_t msg_len;
 uint32_t IC_Val1 = 0;
@@ -94,15 +96,33 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
   if(htim == &htim4)
   {
-	  __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, (uint32_t)(Duty));
-	  Duty = PID_GetOutput(&hpid1, rpm_ref, rpm);
-	  e = rpm_ref - rpm;
+	  if(mode == 0)
+	  {
+		  __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, (uint32_t)(Duty));
+	  	  Duty = PID_GetOutput(&hpid1, rpm_ref, rpm);
+	  	  e = rpm_ref - rpm;
+	  }
+	  else
+	  {
+		  __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, (uint32_t)(Duty));
+		  Duty = PID_GetOutput(&hpid1, rpm_ref_t, rpm);
+		  e = rpm_ref_t - rpm;
+	  }
   }
   if(htim == &htim7)
     {
-  	  uint8_t tx_buffer[64];
-  	  int resp_len = sprintf((char*)tx_buffer, "{ \"RPM\":%d, \"RPM_REF\":%d, \"Duty\":%d }\r", rpm, rpm_ref, Duty);
-  	  HAL_UART_Transmit(&huart3, tx_buffer, resp_len, 10);
+	  if(mode == 0)
+	  {
+		  uint8_t tx_buffer[64];
+		  int resp_len = sprintf((char*)tx_buffer, "{ \"RPM\":%d, \"RPM_REF\":%d, \"Duty\":%d }\r", rpm, rpm_ref, Duty);
+		  HAL_UART_Transmit(&huart3, tx_buffer, resp_len, 10);
+	  }
+	  else
+	  {
+		  uint8_t tx_buffer[64];
+		  int resp_len = sprintf((char*)tx_buffer, "{ \"RPM\":%d, \"RPM_REF_T\":%d, \"Duty\":%d }\r", rpm, rpm_ref_t, Duty);
+		  HAL_UART_Transmit(&huart3, tx_buffer, resp_len, 10);
+	  }
     }
 }
 
@@ -132,9 +152,21 @@ void SystemClock_Config(void);
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
   if(huart == &huart3)
-  {
+	  if(rx_buffer[0] == 'M' && rx_buffer[1] == 'O' && rx_buffer[2] == 'D' && rx_buffer[3] == 'E')
+	     {
+		  if(mode == 0)
+		  	  {
+			  	  mode = 1;
+		  	  }
+		  else
+		  	  {
+			  	  mode = 0;
+		  	  }
+		  }
+	  else
+	  {
       sscanf((char*)&rx_buffer[0], "%d", &rpm_ref);
-  }
+	  }
   HAL_UART_Receive_IT(&huart3, rx_buffer, msg_len);
 }
 
@@ -207,9 +239,9 @@ int main(void)
   while (1)
   {
 	  ds18b20_start_measure(NULL);
-
 	  HAL_Delay(1000);
 	  temp = ds18b20_get_temp(NULL);
+	  rpm_ref_t = 40*temp+900;
 	  Lcd_clear(&lcd);
 	  Lcd_cursor(&lcd, 0,1);
 	  Lcd_string(&lcd, "TEMP: ");
