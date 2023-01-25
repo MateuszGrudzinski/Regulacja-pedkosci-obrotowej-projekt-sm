@@ -1,0 +1,98 @@
+\hypertarget{_d_s18_b20_8h}{}\doxysection{Dokumentacja pliku Components/\+Inc/\+DS18\+B20.h}
+\label{_d_s18_b20_8h}\index{Components/Inc/DS18B20.h@{Components/Inc/DS18B20.h}}
+{\ttfamily \#include \char`\"{}stm32f7xx.\+h\char`\"{}}\newline
+\doxysubsection*{Definicje}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_d_s18_b20_8h_a72a6d4032fd4e40bf769fa733a8c1c90}{DS18\+B20\+\_\+\+ROM\+\_\+\+CODE\+\_\+\+SIZE}}~8
+\end{DoxyCompactItemize}
+\doxysubsection*{Funkcje}
+\begin{DoxyCompactItemize}
+\item 
+HAL\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{_d_s18_b20_8h_af1996a90413b1df7e1c44ca837c7bfbd}{ds18b20\+\_\+init}} (void)
+\begin{DoxyCompactList}\small\item\em Inicjalizacja 1-\/wire. \end{DoxyCompactList}\item 
+HAL\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{_d_s18_b20_8h_af895c292db6d4b39de89e9449733159f}{ds18b20\+\_\+read\+\_\+address}} (uint8\+\_\+t $\ast$rom\+\_\+code)
+\begin{DoxyCompactList}\small\item\em Odczytaj adres czujnika i policz CRC. \end{DoxyCompactList}\item 
+HAL\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{_d_s18_b20_8h_a74a89b394554033c697447744f177d63}{ds18b20\+\_\+start\+\_\+measure}} (const uint8\+\_\+t $\ast$rom\+\_\+code)
+\begin{DoxyCompactList}\small\item\em Rozpocznij pomiar temperatury. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{_d_s18_b20_8h_a8ea44f1cc420a449e4847c9bee68c12b}{ds18b20\+\_\+get\+\_\+temp}} (const uint8\+\_\+t $\ast$rom\+\_\+code)
+\begin{DoxyCompactList}\small\item\em Pomiar temperatury z czujnika. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Dokumentacja definicji}
+\mbox{\Hypertarget{_d_s18_b20_8h_a72a6d4032fd4e40bf769fa733a8c1c90}\label{_d_s18_b20_8h_a72a6d4032fd4e40bf769fa733a8c1c90}} 
+\index{DS18B20.h@{DS18B20.h}!DS18B20\_ROM\_CODE\_SIZE@{DS18B20\_ROM\_CODE\_SIZE}}
+\index{DS18B20\_ROM\_CODE\_SIZE@{DS18B20\_ROM\_CODE\_SIZE}!DS18B20.h@{DS18B20.h}}
+\doxysubsubsection{\texorpdfstring{DS18B20\_ROM\_CODE\_SIZE}{DS18B20\_ROM\_CODE\_SIZE}}
+{\footnotesize\ttfamily \#define DS18\+B20\+\_\+\+ROM\+\_\+\+CODE\+\_\+\+SIZE~8}
+
+
+
+\doxysubsection{Dokumentacja funkcji}
+\mbox{\Hypertarget{_d_s18_b20_8h_a8ea44f1cc420a449e4847c9bee68c12b}\label{_d_s18_b20_8h_a8ea44f1cc420a449e4847c9bee68c12b}} 
+\index{DS18B20.h@{DS18B20.h}!ds18b20\_get\_temp@{ds18b20\_get\_temp}}
+\index{ds18b20\_get\_temp@{ds18b20\_get\_temp}!DS18B20.h@{DS18B20.h}}
+\doxysubsubsection{\texorpdfstring{ds18b20\_get\_temp()}{ds18b20\_get\_temp()}}
+{\footnotesize\ttfamily float ds18b20\+\_\+get\+\_\+temp (\begin{DoxyParamCaption}\item[{const uint8\+\_\+t $\ast$}]{rom\+\_\+code }\end{DoxyParamCaption})}
+
+
+
+Pomiar temperatury z czujnika. 
+
+\begin{DoxyReturn}{Zwraca}
+Temperatura w stopniach Celsjusza 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parametry}
+{\em rom\+\_\+code} & adres czujnika lub NULL \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{_d_s18_b20_8h_af1996a90413b1df7e1c44ca837c7bfbd}\label{_d_s18_b20_8h_af1996a90413b1df7e1c44ca837c7bfbd}} 
+\index{DS18B20.h@{DS18B20.h}!ds18b20\_init@{ds18b20\_init}}
+\index{ds18b20\_init@{ds18b20\_init}!DS18B20.h@{DS18B20.h}}
+\doxysubsubsection{\texorpdfstring{ds18b20\_init()}{ds18b20\_init()}}
+{\footnotesize\ttfamily HAL\+\_\+\+Status\+Type\+Def ds18b20\+\_\+init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Inicjalizacja 1-\/wire. 
+
+\begin{DoxyReturn}{Zwraca}
+HAL\+\_\+\+OK/\+HAL\+\_\+\+ERROR. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_d_s18_b20_8h_af895c292db6d4b39de89e9449733159f}\label{_d_s18_b20_8h_af895c292db6d4b39de89e9449733159f}} 
+\index{DS18B20.h@{DS18B20.h}!ds18b20\_read\_address@{ds18b20\_read\_address}}
+\index{ds18b20\_read\_address@{ds18b20\_read\_address}!DS18B20.h@{DS18B20.h}}
+\doxysubsubsection{\texorpdfstring{ds18b20\_read\_address()}{ds18b20\_read\_address()}}
+{\footnotesize\ttfamily HAL\+\_\+\+Status\+Type\+Def ds18b20\+\_\+read\+\_\+address (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{rom\+\_\+code }\end{DoxyParamCaption})}
+
+
+
+Odczytaj adres czujnika i policz CRC. 
+
+Pozwala na odczytanie adresu badanego czujnika. \begin{DoxyReturn}{Zwraca}
+HAL\+\_\+\+OK/\+HAL\+\_\+\+ERROR 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parametry}
+{\em rom\+\_\+code} & tablica do zapisania odczytanego adresu. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{_d_s18_b20_8h_a74a89b394554033c697447744f177d63}\label{_d_s18_b20_8h_a74a89b394554033c697447744f177d63}} 
+\index{DS18B20.h@{DS18B20.h}!ds18b20\_start\_measure@{ds18b20\_start\_measure}}
+\index{ds18b20\_start\_measure@{ds18b20\_start\_measure}!DS18B20.h@{DS18B20.h}}
+\doxysubsubsection{\texorpdfstring{ds18b20\_start\_measure()}{ds18b20\_start\_measure()}}
+{\footnotesize\ttfamily HAL\+\_\+\+Status\+Type\+Def ds18b20\+\_\+start\+\_\+measure (\begin{DoxyParamCaption}\item[{const uint8\+\_\+t $\ast$}]{rom\+\_\+code }\end{DoxyParamCaption})}
+
+
+
+Rozpocznij pomiar temperatury. 
+
+Wysyla komende rozpoczynajaca pomiary przez czujnik. 
+\begin{DoxyParams}{Parametry}
+{\em rom\+\_\+code} & Adres urządzenia do którego wysyłamy dane lub NULL. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+HAL\+\_\+\+OK/\+HAL\+\_\+\+ERROR 
+\end{DoxyReturn}

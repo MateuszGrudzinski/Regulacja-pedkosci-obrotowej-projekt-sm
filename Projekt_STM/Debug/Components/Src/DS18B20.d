@@ -1,5 +1,5 @@
 Components/Src/DS18B20.o: ../Components/Src/DS18B20.c \
- C:/Users/Admin/Documents/GitHub/Regulacja-pedkosci-obrotowej-projekt-sm/Projekt_STM/Components/Inc/ds18b20.h \
+ D:/Projekt_SM/Regulacja-pedkosci-obrotowej-projekt-sm/Projekt_STM/Components/Inc/ds18b20.h \
  ../Drivers/CMSIS/Device/ST/STM32F7xx/Include/stm32f7xx.h \
  ../Drivers/CMSIS/Device/ST/STM32F7xx/Include/stm32f746xx.h \
  ../Drivers/CMSIS/Include/core_cm7.h \
@@ -32,8 +32,8 @@ Components/Src/DS18B20.o: ../Components/Src/DS18B20.c \
  ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_tim_ex.h \
  ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_uart.h \
  ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_uart_ex.h \
- C:/Users/Admin/Documents/GitHub/Regulacja-pedkosci-obrotowej-projekt-sm/Projekt_STM/Components/Inc/1wire.h
-C:/Users/Admin/Documents/GitHub/Regulacja-pedkosci-obrotowej-projekt-sm/Projekt_STM/Components/Inc/ds18b20.h:
+ D:/Projekt_SM/Regulacja-pedkosci-obrotowej-projekt-sm/Projekt_STM/Components/Inc/1wire.h
+D:/Projekt_SM/Regulacja-pedkosci-obrotowej-projekt-sm/Projekt_STM/Components/Inc/ds18b20.h:
 ../Drivers/CMSIS/Device/ST/STM32F7xx/Include/stm32f7xx.h:
 ../Drivers/CMSIS/Device/ST/STM32F7xx/Include/stm32f746xx.h:
 ../Drivers/CMSIS/Include/core_cm7.h:
@@ -66,4 +66,4 @@ C:/Users/Admin/Documents/GitHub/Regulacja-pedkosci-obrotowej-projekt-sm/Projekt_
 ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_tim_ex.h:
 ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_uart.h:
 ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_uart_ex.h:
-C:/Users/Admin/Documents/GitHub/Regulacja-pedkosci-obrotowej-projekt-sm/Projekt_STM/Components/Inc/1wire.h:
+D:/Projekt_SM/Regulacja-pedkosci-obrotowej-projekt-sm/Projekt_STM/Components/Inc/1wire.h:

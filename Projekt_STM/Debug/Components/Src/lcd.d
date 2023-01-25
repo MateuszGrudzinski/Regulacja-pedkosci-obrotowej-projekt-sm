@@ -1,5 +1,5 @@
 Components/Src/lcd.o: ../Components/Src/lcd.c \
- C:/Users/Admin/Documents/GitHub/Regulacja-pedkosci-obrotowej-projekt-sm/Projekt_STM/Components/Inc/lcd.h \
+ D:/Projekt_SM/Regulacja-pedkosci-obrotowej-projekt-sm/Projekt_STM/Components/Inc/lcd.h \
  ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal.h \
  ../Core/Inc/stm32f7xx_hal_conf.h \
  ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_rcc.h \
@@ -33,7 +33,7 @@ Components/Src/lcd.o: ../Components/Src/lcd.c \
  ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_uart.h \
  ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_uart_ex.h \
  ../Core/Inc/main.h
-C:/Users/Admin/Documents/GitHub/Regulacja-pedkosci-obrotowej-projekt-sm/Projekt_STM/Components/Inc/lcd.h:
+D:/Projekt_SM/Regulacja-pedkosci-obrotowej-projekt-sm/Projekt_STM/Components/Inc/lcd.h:
 ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal.h:
 ../Core/Inc/stm32f7xx_hal_conf.h:
 ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_rcc.h:

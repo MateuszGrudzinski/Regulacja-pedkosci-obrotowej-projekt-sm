@@ -1,0 +1,166 @@
+\hypertarget{lcd_8c}{}\doxysection{Dokumentacja pliku Components/\+Src/lcd.c}
+\label{lcd_8c}\index{Components/Src/lcd.c@{Components/Src/lcd.c}}
+{\ttfamily \#include \char`\"{}lcd.\+h\char`\"{}}\newline
+\doxysubsection*{Funkcje}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_lcd___handle_type_def}{Lcd\+\_\+\+Handle\+Type\+Def}} \mbox{\hyperlink{lcd_8c_a555f8cc26de31bbf138597e8a658d43f}{Lcd\+\_\+create}} (\mbox{\hyperlink{lcd_8h_a5032730cd6aec5706ab225bf2693521d}{Lcd\+\_\+\+Port\+Type}} port\mbox{[}$\,$\mbox{]}, \mbox{\hyperlink{lcd_8h_a52d3b2f0ccdbb6bacc93c0d892c3a65e}{Lcd\+\_\+\+Pin\+Type}} pin\mbox{[}$\,$\mbox{]}, \mbox{\hyperlink{lcd_8h_a5032730cd6aec5706ab225bf2693521d}{Lcd\+\_\+\+Port\+Type}} rs\+\_\+port, \mbox{\hyperlink{lcd_8h_a52d3b2f0ccdbb6bacc93c0d892c3a65e}{Lcd\+\_\+\+Pin\+Type}} rs\+\_\+pin, \mbox{\hyperlink{lcd_8h_a5032730cd6aec5706ab225bf2693521d}{Lcd\+\_\+\+Port\+Type}} en\+\_\+port, \mbox{\hyperlink{lcd_8h_a52d3b2f0ccdbb6bacc93c0d892c3a65e}{Lcd\+\_\+\+Pin\+Type}} en\+\_\+pin, \mbox{\hyperlink{lcd_8h_a3f91f51a22930c98fed044e5c3c6da4d}{Lcd\+\_\+\+Mode\+Type\+Def}} mode)
+\begin{DoxyCompactList}\small\item\em Inicjalizacja struktury wyświetlacza. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{lcd_8c_a812f628ceebeae7c8acdd608d13467b5}{Lcd\+\_\+init}} (\mbox{\hyperlink{struct_lcd___handle_type_def}{Lcd\+\_\+\+Handle\+Type\+Def}} $\ast$lcd)
+\begin{DoxyCompactList}\small\item\em Inicjalizacja wyświetlacza. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{lcd_8c_adff7b4c234b2bb99e34108012953af2f}{Lcd\+\_\+float}} (\mbox{\hyperlink{struct_lcd___handle_type_def}{Lcd\+\_\+\+Handle\+Type\+Def}} $\ast$lcd, float number)
+\begin{DoxyCompactList}\small\item\em Wypisanie liczby zmiennoprzecinkowej w miejscu kursora. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{lcd_8c_aeb7d8cf010d0431082793c35d2f3986a}{Lcd\+\_\+int}} (\mbox{\hyperlink{struct_lcd___handle_type_def}{Lcd\+\_\+\+Handle\+Type\+Def}} $\ast$lcd, int number)
+\begin{DoxyCompactList}\small\item\em Wypisanie liczby całkowitej w miejscu kursora. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{lcd_8c_a41b19f1767241abaad51ba81820a1f8b}{Lcd\+\_\+string}} (\mbox{\hyperlink{struct_lcd___handle_type_def}{Lcd\+\_\+\+Handle\+Type\+Def}} $\ast$lcd, char $\ast$string)
+\begin{DoxyCompactList}\small\item\em Wypisanie ciągu znaków w miejscu kursora. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{lcd_8c_ae31b55ceec6ac19f04e4f8afe641d304}{Lcd\+\_\+cursor}} (\mbox{\hyperlink{struct_lcd___handle_type_def}{Lcd\+\_\+\+Handle\+Type\+Def}} $\ast$lcd, uint8\+\_\+t row, uint8\+\_\+t col)
+\begin{DoxyCompactList}\small\item\em Ustawienie kursora. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{lcd_8c_ad2be8694070f64fe09c1e35469a568b6}{Lcd\+\_\+clear}} (\mbox{\hyperlink{struct_lcd___handle_type_def}{Lcd\+\_\+\+Handle\+Type\+Def}} $\ast$lcd)
+\begin{DoxyCompactList}\small\item\em Wyczyszczenie wyświetlacza. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{lcd_8c_aad2da0b28baec7977d14487555a6d7f0}{Lcd\+\_\+define\+\_\+char}} (\mbox{\hyperlink{struct_lcd___handle_type_def}{Lcd\+\_\+\+Handle\+Type\+Def}} $\ast$lcd, uint8\+\_\+t code, uint8\+\_\+t bitmap\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+\doxysubsection*{Zmienne}
+\begin{DoxyCompactItemize}
+\item 
+const uint8\+\_\+t \mbox{\hyperlink{lcd_8c_a4be6f3b251ac82300f2047124369e92d}{ROW\+\_\+16}} \mbox{[}$\,$\mbox{]} = \{0x00, 0x40, 0x10, 0x50\}
+\item 
+const uint8\+\_\+t \mbox{\hyperlink{lcd_8c_a8ce7cee6a792ba94fce40e64a8a593bd}{ROW\+\_\+20}} \mbox{[}$\,$\mbox{]} = \{0x00, 0x40, 0x14, 0x54\}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Dokumentacja funkcji}
+\mbox{\Hypertarget{lcd_8c_ad2be8694070f64fe09c1e35469a568b6}\label{lcd_8c_ad2be8694070f64fe09c1e35469a568b6}} 
+\index{lcd.c@{lcd.c}!Lcd\_clear@{Lcd\_clear}}
+\index{Lcd\_clear@{Lcd\_clear}!lcd.c@{lcd.c}}
+\doxysubsubsection{\texorpdfstring{Lcd\_clear()}{Lcd\_clear()}}
+{\footnotesize\ttfamily void Lcd\+\_\+clear (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_lcd___handle_type_def}{Lcd\+\_\+\+Handle\+Type\+Def}} $\ast$}]{lcd }\end{DoxyParamCaption})}
+
+
+
+Wyczyszczenie wyświetlacza. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em $\ast$lcd} & handler wyświetlacza. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{lcd_8c_a555f8cc26de31bbf138597e8a658d43f}\label{lcd_8c_a555f8cc26de31bbf138597e8a658d43f}} 
+\index{lcd.c@{lcd.c}!Lcd\_create@{Lcd\_create}}
+\index{Lcd\_create@{Lcd\_create}!lcd.c@{lcd.c}}
+\doxysubsubsection{\texorpdfstring{Lcd\_create()}{Lcd\_create()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_lcd___handle_type_def}{Lcd\+\_\+\+Handle\+Type\+Def}} Lcd\+\_\+create (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{lcd_8h_a5032730cd6aec5706ab225bf2693521d}{Lcd\+\_\+\+Port\+Type}}}]{port\mbox{[}$\,$\mbox{]},  }\item[{\mbox{\hyperlink{lcd_8h_a52d3b2f0ccdbb6bacc93c0d892c3a65e}{Lcd\+\_\+\+Pin\+Type}}}]{pin\mbox{[}$\,$\mbox{]},  }\item[{\mbox{\hyperlink{lcd_8h_a5032730cd6aec5706ab225bf2693521d}{Lcd\+\_\+\+Port\+Type}}}]{rs\+\_\+port,  }\item[{\mbox{\hyperlink{lcd_8h_a52d3b2f0ccdbb6bacc93c0d892c3a65e}{Lcd\+\_\+\+Pin\+Type}}}]{rs\+\_\+pin,  }\item[{\mbox{\hyperlink{lcd_8h_a5032730cd6aec5706ab225bf2693521d}{Lcd\+\_\+\+Port\+Type}}}]{en\+\_\+port,  }\item[{\mbox{\hyperlink{lcd_8h_a52d3b2f0ccdbb6bacc93c0d892c3a65e}{Lcd\+\_\+\+Pin\+Type}}}]{en\+\_\+pin,  }\item[{\mbox{\hyperlink{lcd_8h_a3f91f51a22930c98fed044e5c3c6da4d}{Lcd\+\_\+\+Mode\+Type\+Def}}}]{mode }\end{DoxyParamCaption})}
+
+
+
+Inicjalizacja struktury wyświetlacza. 
+
+\begin{DoxySeeAlso}{Zobacz również}
+\mbox{\hyperlink{struct_lcd___handle_type_def}{Lcd\+\_\+\+Handle\+Type\+Def}}. 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{lcd_8c_ae31b55ceec6ac19f04e4f8afe641d304}\label{lcd_8c_ae31b55ceec6ac19f04e4f8afe641d304}} 
+\index{lcd.c@{lcd.c}!Lcd\_cursor@{Lcd\_cursor}}
+\index{Lcd\_cursor@{Lcd\_cursor}!lcd.c@{lcd.c}}
+\doxysubsubsection{\texorpdfstring{Lcd\_cursor()}{Lcd\_cursor()}}
+{\footnotesize\ttfamily void Lcd\+\_\+cursor (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_lcd___handle_type_def}{Lcd\+\_\+\+Handle\+Type\+Def}} $\ast$}]{lcd,  }\item[{uint8\+\_\+t}]{row,  }\item[{uint8\+\_\+t}]{col }\end{DoxyParamCaption})}
+
+
+
+Ustawienie kursora. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em $\ast$lcd} & handler wyświetlacza. \\
+\hline
+{\em row} & Indeks rzędu. \\
+\hline
+{\em col} & Indeks kolumny. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{lcd_8c_aad2da0b28baec7977d14487555a6d7f0}\label{lcd_8c_aad2da0b28baec7977d14487555a6d7f0}} 
+\index{lcd.c@{lcd.c}!Lcd\_define\_char@{Lcd\_define\_char}}
+\index{Lcd\_define\_char@{Lcd\_define\_char}!lcd.c@{lcd.c}}
+\doxysubsubsection{\texorpdfstring{Lcd\_define\_char()}{Lcd\_define\_char()}}
+{\footnotesize\ttfamily void Lcd\+\_\+define\+\_\+char (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_lcd___handle_type_def}{Lcd\+\_\+\+Handle\+Type\+Def}} $\ast$}]{lcd,  }\item[{uint8\+\_\+t}]{code,  }\item[{uint8\+\_\+t}]{bitmap\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{lcd_8c_adff7b4c234b2bb99e34108012953af2f}\label{lcd_8c_adff7b4c234b2bb99e34108012953af2f}} 
+\index{lcd.c@{lcd.c}!Lcd\_float@{Lcd\_float}}
+\index{Lcd\_float@{Lcd\_float}!lcd.c@{lcd.c}}
+\doxysubsubsection{\texorpdfstring{Lcd\_float()}{Lcd\_float()}}
+{\footnotesize\ttfamily void Lcd\+\_\+float (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_lcd___handle_type_def}{Lcd\+\_\+\+Handle\+Type\+Def}} $\ast$}]{lcd,  }\item[{float}]{number }\end{DoxyParamCaption})}
+
+
+
+Wypisanie liczby zmiennoprzecinkowej w miejscu kursora. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em $\ast$lcd} & handler wyświetlacza. \\
+\hline
+{\em number} & liczba float do wyświetlenia. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{lcd_8c_a812f628ceebeae7c8acdd608d13467b5}\label{lcd_8c_a812f628ceebeae7c8acdd608d13467b5}} 
+\index{lcd.c@{lcd.c}!Lcd\_init@{Lcd\_init}}
+\index{Lcd\_init@{Lcd\_init}!lcd.c@{lcd.c}}
+\doxysubsubsection{\texorpdfstring{Lcd\_init()}{Lcd\_init()}}
+{\footnotesize\ttfamily void Lcd\+\_\+init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_lcd___handle_type_def}{Lcd\+\_\+\+Handle\+Type\+Def}} $\ast$}]{lcd }\end{DoxyParamCaption})}
+
+
+
+Inicjalizacja wyświetlacza. 
+
+Ustawienie kursora, wyczyszczenie ekranu. 
+\begin{DoxyParams}{Parametry}
+{\em $\ast$lcd} & handler wyświetlacza. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{lcd_8c_aeb7d8cf010d0431082793c35d2f3986a}\label{lcd_8c_aeb7d8cf010d0431082793c35d2f3986a}} 
+\index{lcd.c@{lcd.c}!Lcd\_int@{Lcd\_int}}
+\index{Lcd\_int@{Lcd\_int}!lcd.c@{lcd.c}}
+\doxysubsubsection{\texorpdfstring{Lcd\_int()}{Lcd\_int()}}
+{\footnotesize\ttfamily void Lcd\+\_\+int (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_lcd___handle_type_def}{Lcd\+\_\+\+Handle\+Type\+Def}} $\ast$}]{lcd,  }\item[{int}]{number }\end{DoxyParamCaption})}
+
+
+
+Wypisanie liczby całkowitej w miejscu kursora. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em $\ast$lcd} & handler wyświetlacza. \\
+\hline
+{\em number} & liczba int do wyświetlenia. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{lcd_8c_a41b19f1767241abaad51ba81820a1f8b}\label{lcd_8c_a41b19f1767241abaad51ba81820a1f8b}} 
+\index{lcd.c@{lcd.c}!Lcd\_string@{Lcd\_string}}
+\index{Lcd\_string@{Lcd\_string}!lcd.c@{lcd.c}}
+\doxysubsubsection{\texorpdfstring{Lcd\_string()}{Lcd\_string()}}
+{\footnotesize\ttfamily void Lcd\+\_\+string (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_lcd___handle_type_def}{Lcd\+\_\+\+Handle\+Type\+Def}} $\ast$}]{lcd,  }\item[{char $\ast$}]{string }\end{DoxyParamCaption})}
+
+
+
+Wypisanie ciągu znaków w miejscu kursora. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em $\ast$lcd} & handler wyświetlacza. \\
+\hline
+{\em string} & Tablica znaków do wyświetlenia. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Dokumentacja zmiennych}
+\mbox{\Hypertarget{lcd_8c_a4be6f3b251ac82300f2047124369e92d}\label{lcd_8c_a4be6f3b251ac82300f2047124369e92d}} 
+\index{lcd.c@{lcd.c}!ROW\_16@{ROW\_16}}
+\index{ROW\_16@{ROW\_16}!lcd.c@{lcd.c}}
+\doxysubsubsection{\texorpdfstring{ROW\_16}{ROW\_16}}
+{\footnotesize\ttfamily const uint8\+\_\+t ROW\+\_\+16\mbox{[}$\,$\mbox{]} = \{0x00, 0x40, 0x10, 0x50\}}
+
+\mbox{\Hypertarget{lcd_8c_a8ce7cee6a792ba94fce40e64a8a593bd}\label{lcd_8c_a8ce7cee6a792ba94fce40e64a8a593bd}} 
+\index{lcd.c@{lcd.c}!ROW\_20@{ROW\_20}}
+\index{ROW\_20@{ROW\_20}!lcd.c@{lcd.c}}
+\doxysubsubsection{\texorpdfstring{ROW\_20}{ROW\_20}}
+{\footnotesize\ttfamily const uint8\+\_\+t ROW\+\_\+20\mbox{[}$\,$\mbox{]} = \{0x00, 0x40, 0x14, 0x54\}}
+

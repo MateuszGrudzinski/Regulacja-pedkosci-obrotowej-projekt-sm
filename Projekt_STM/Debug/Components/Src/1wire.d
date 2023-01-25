@@ -1,5 +1,5 @@
 Components/Src/1wire.o: ../Components/Src/1wire.c \
- C:/Users/Admin/Documents/GitHub/Regulacja-pedkosci-obrotowej-projekt-sm/Projekt_STM/Components/Inc/1wire.h \
+ D:/Projekt_SM/Regulacja-pedkosci-obrotowej-projekt-sm/Projekt_STM/Components/Inc/1wire.h \
  ../Drivers/CMSIS/Device/ST/STM32F7xx/Include/stm32f7xx.h \
  ../Drivers/CMSIS/Device/ST/STM32F7xx/Include/stm32f746xx.h \
  ../Drivers/CMSIS/Include/core_cm7.h \
@@ -33,7 +33,7 @@ Components/Src/1wire.o: ../Components/Src/1wire.c \
  ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_uart.h \
  ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_uart_ex.h \
  ../Core/Inc/gpio.h ../Core/Inc/main.h ../Core/Inc/tim.h
-C:/Users/Admin/Documents/GitHub/Regulacja-pedkosci-obrotowej-projekt-sm/Projekt_STM/Components/Inc/1wire.h:
+D:/Projekt_SM/Regulacja-pedkosci-obrotowej-projekt-sm/Projekt_STM/Components/Inc/1wire.h:
 ../Drivers/CMSIS/Device/ST/STM32F7xx/Include/stm32f7xx.h:
 ../Drivers/CMSIS/Device/ST/STM32F7xx/Include/stm32f746xx.h:
 ../Drivers/CMSIS/Include/core_cm7.h:

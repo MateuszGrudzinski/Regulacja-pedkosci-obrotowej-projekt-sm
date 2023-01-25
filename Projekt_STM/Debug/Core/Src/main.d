@@ -33,10 +33,9 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_uart_ex.h \
  ../Core/Inc/adc.h ../Core/Inc/main.h ../Core/Inc/tim.h \
  ../Core/Inc/usart.h ../Core/Inc/gpio.h \
- C:/Users/Admin/Documents/GitHub/Regulacja-pedkosci-obrotowej-projekt-sm/Projekt_STM/Components/Inc/lcd.h \
- C:/Users/Admin/Documents/GitHub/Regulacja-pedkosci-obrotowej-projekt-sm/Projekt_STM/Components/Inc/DS18B20.h \
- ../Core/Inc/pid_controller_config.h ../Core/Inc/pid_controller.h \
- C:/Users/Admin/Documents/GitHub/Regulacja-pedkosci-obrotowej-projekt-sm/Projekt_STM/Components/Inc/fan.h
+ D:/Projekt_SM/Regulacja-pedkosci-obrotowej-projekt-sm/Projekt_STM/Components/Inc/lcd.h \
+ D:/Projekt_SM/Regulacja-pedkosci-obrotowej-projekt-sm/Projekt_STM/Components/Inc/DS18B20.h \
+ ../Core/Inc/pid_controller_config.h ../Core/Inc/pid_controller.h
 ../Core/Inc/main.h:
 ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal.h:
 ../Core/Inc/stm32f7xx_hal_conf.h:
@@ -75,8 +74,7 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Core/Inc/tim.h:
 ../Core/Inc/usart.h:
 ../Core/Inc/gpio.h:
-C:/Users/Admin/Documents/GitHub/Regulacja-pedkosci-obrotowej-projekt-sm/Projekt_STM/Components/Inc/lcd.h:
-C:/Users/Admin/Documents/GitHub/Regulacja-pedkosci-obrotowej-projekt-sm/Projekt_STM/Components/Inc/DS18B20.h:
+D:/Projekt_SM/Regulacja-pedkosci-obrotowej-projekt-sm/Projekt_STM/Components/Inc/lcd.h:
+D:/Projekt_SM/Regulacja-pedkosci-obrotowej-projekt-sm/Projekt_STM/Components/Inc/DS18B20.h:
 ../Core/Inc/pid_controller_config.h:
 ../Core/Inc/pid_controller.h:
-C:/Users/Admin/Documents/GitHub/Regulacja-pedkosci-obrotowej-projekt-sm/Projekt_STM/Components/Inc/fan.h:

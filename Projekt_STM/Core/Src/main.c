@@ -29,7 +29,6 @@
 #include "stm32f7xx_hal.h"
 #include "DS18B20.h"
 #include "pid_controller_config.h"
-#include "fan.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -96,6 +95,7 @@ void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim)
 }
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
+  /// Oblcizenie sygnału sterującego.
   if(htim == &htim4)
   {
 	  if(mode == 0)
@@ -111,6 +111,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 		  e = rpm_ref_t - rpm;
 	  }
   }
+  /// Wysłanie aktualnych informacji o pracy układu poprzez port szeregowy.
   if(htim == &htim7)
     {
 	  if(mode == 0)
@@ -233,6 +234,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+	  /// Pomiar temperatury, obsługa wyświetlacza.
 	  ds18b20_start_measure(NULL);
 	  HAL_Delay(1000);
 	  temp = ds18b20_get_temp(NULL);

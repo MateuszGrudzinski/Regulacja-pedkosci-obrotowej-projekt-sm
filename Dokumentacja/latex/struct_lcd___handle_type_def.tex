@@ -1,0 +1,93 @@
+\hypertarget{struct_lcd___handle_type_def}{}\doxysection{Dokumentacja struktury Lcd\+\_\+\+Handle\+Type\+Def}
+\label{struct_lcd___handle_type_def}\index{Lcd\_HandleTypeDef@{Lcd\_HandleTypeDef}}
+
+
+Struktura opisująca wyświetlacz LCD.  
+
+
+
+
+{\ttfamily \#include $<$lcd.\+h$>$}
+
+\doxysubsection*{Atrybuty publiczne}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{lcd_8h_a5032730cd6aec5706ab225bf2693521d}{Lcd\+\_\+\+Port\+Type}} $\ast$ \mbox{\hyperlink{struct_lcd___handle_type_def_a85443c7275f3eaa2d895b2fb27362e2d}{data\+\_\+port}}
+\item 
+\mbox{\hyperlink{lcd_8h_a52d3b2f0ccdbb6bacc93c0d892c3a65e}{Lcd\+\_\+\+Pin\+Type}} $\ast$ \mbox{\hyperlink{struct_lcd___handle_type_def_afd53a7a6684d30d3011a60bda522f930}{data\+\_\+pin}}
+\item 
+\mbox{\hyperlink{lcd_8h_a5032730cd6aec5706ab225bf2693521d}{Lcd\+\_\+\+Port\+Type}} \mbox{\hyperlink{struct_lcd___handle_type_def_ab76b4962477acac2c6bec45305a326cd}{rs\+\_\+port}}
+\item 
+\mbox{\hyperlink{lcd_8h_a52d3b2f0ccdbb6bacc93c0d892c3a65e}{Lcd\+\_\+\+Pin\+Type}} \mbox{\hyperlink{struct_lcd___handle_type_def_a90cc1c6b19c7ee788918ccb69f671567}{rs\+\_\+pin}}
+\item 
+\mbox{\hyperlink{lcd_8h_a5032730cd6aec5706ab225bf2693521d}{Lcd\+\_\+\+Port\+Type}} \mbox{\hyperlink{struct_lcd___handle_type_def_ae616c6be7148be19c2f2afffe395cc20}{en\+\_\+port}}
+\item 
+\mbox{\hyperlink{lcd_8h_a52d3b2f0ccdbb6bacc93c0d892c3a65e}{Lcd\+\_\+\+Pin\+Type}} \mbox{\hyperlink{struct_lcd___handle_type_def_ac59a21ab5368efee4f04319141a109a3}{en\+\_\+pin}}
+\item 
+\mbox{\hyperlink{lcd_8h_a3f91f51a22930c98fed044e5c3c6da4d}{Lcd\+\_\+\+Mode\+Type\+Def}} \mbox{\hyperlink{struct_lcd___handle_type_def_aae0e33d2bc934c9dc5024d4442082f1c}{mode}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Struktura opisująca wyświetlacz LCD. 
+
+Zawiera informację o urzywanych pinach oraz trybie pracy. 
+\begin{DoxyParams}{Parametry}
+{\em data\+\_\+port} & Port zawierający Piny Danych. \\
+\hline
+{\em data\+\_\+pin} & Ustawienie pinów danych wykorzystywanych do komunikacji z wyświetlaczem. \\
+\hline
+{\em rs\+\_\+port} & Port zawierający pin Resetu. \\
+\hline
+{\em rs\+\_\+pin} & Pin resetu. \\
+\hline
+{\em en\+\_\+port} & Port zawierający pin Enable. \\
+\hline
+{\em en\+\_\+pin} & Pin enable. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Dokumentacja atrybutów składowych}
+\mbox{\Hypertarget{struct_lcd___handle_type_def_afd53a7a6684d30d3011a60bda522f930}\label{struct_lcd___handle_type_def_afd53a7a6684d30d3011a60bda522f930}} 
+\index{Lcd\_HandleTypeDef@{Lcd\_HandleTypeDef}!data\_pin@{data\_pin}}
+\index{data\_pin@{data\_pin}!Lcd\_HandleTypeDef@{Lcd\_HandleTypeDef}}
+\doxysubsubsection{\texorpdfstring{data\_pin}{data\_pin}}
+{\footnotesize\ttfamily \mbox{\hyperlink{lcd_8h_a52d3b2f0ccdbb6bacc93c0d892c3a65e}{Lcd\+\_\+\+Pin\+Type}}$\ast$ Lcd\+\_\+\+Handle\+Type\+Def\+::data\+\_\+pin}
+
+\mbox{\Hypertarget{struct_lcd___handle_type_def_a85443c7275f3eaa2d895b2fb27362e2d}\label{struct_lcd___handle_type_def_a85443c7275f3eaa2d895b2fb27362e2d}} 
+\index{Lcd\_HandleTypeDef@{Lcd\_HandleTypeDef}!data\_port@{data\_port}}
+\index{data\_port@{data\_port}!Lcd\_HandleTypeDef@{Lcd\_HandleTypeDef}}
+\doxysubsubsection{\texorpdfstring{data\_port}{data\_port}}
+{\footnotesize\ttfamily \mbox{\hyperlink{lcd_8h_a5032730cd6aec5706ab225bf2693521d}{Lcd\+\_\+\+Port\+Type}}$\ast$ Lcd\+\_\+\+Handle\+Type\+Def\+::data\+\_\+port}
+
+\mbox{\Hypertarget{struct_lcd___handle_type_def_ac59a21ab5368efee4f04319141a109a3}\label{struct_lcd___handle_type_def_ac59a21ab5368efee4f04319141a109a3}} 
+\index{Lcd\_HandleTypeDef@{Lcd\_HandleTypeDef}!en\_pin@{en\_pin}}
+\index{en\_pin@{en\_pin}!Lcd\_HandleTypeDef@{Lcd\_HandleTypeDef}}
+\doxysubsubsection{\texorpdfstring{en\_pin}{en\_pin}}
+{\footnotesize\ttfamily \mbox{\hyperlink{lcd_8h_a52d3b2f0ccdbb6bacc93c0d892c3a65e}{Lcd\+\_\+\+Pin\+Type}} Lcd\+\_\+\+Handle\+Type\+Def\+::en\+\_\+pin}
+
+\mbox{\Hypertarget{struct_lcd___handle_type_def_ae616c6be7148be19c2f2afffe395cc20}\label{struct_lcd___handle_type_def_ae616c6be7148be19c2f2afffe395cc20}} 
+\index{Lcd\_HandleTypeDef@{Lcd\_HandleTypeDef}!en\_port@{en\_port}}
+\index{en\_port@{en\_port}!Lcd\_HandleTypeDef@{Lcd\_HandleTypeDef}}
+\doxysubsubsection{\texorpdfstring{en\_port}{en\_port}}
+{\footnotesize\ttfamily \mbox{\hyperlink{lcd_8h_a5032730cd6aec5706ab225bf2693521d}{Lcd\+\_\+\+Port\+Type}} Lcd\+\_\+\+Handle\+Type\+Def\+::en\+\_\+port}
+
+\mbox{\Hypertarget{struct_lcd___handle_type_def_aae0e33d2bc934c9dc5024d4442082f1c}\label{struct_lcd___handle_type_def_aae0e33d2bc934c9dc5024d4442082f1c}} 
+\index{Lcd\_HandleTypeDef@{Lcd\_HandleTypeDef}!mode@{mode}}
+\index{mode@{mode}!Lcd\_HandleTypeDef@{Lcd\_HandleTypeDef}}
+\doxysubsubsection{\texorpdfstring{mode}{mode}}
+{\footnotesize\ttfamily \mbox{\hyperlink{lcd_8h_a3f91f51a22930c98fed044e5c3c6da4d}{Lcd\+\_\+\+Mode\+Type\+Def}} Lcd\+\_\+\+Handle\+Type\+Def\+::mode}
+
+\mbox{\Hypertarget{struct_lcd___handle_type_def_a90cc1c6b19c7ee788918ccb69f671567}\label{struct_lcd___handle_type_def_a90cc1c6b19c7ee788918ccb69f671567}} 
+\index{Lcd\_HandleTypeDef@{Lcd\_HandleTypeDef}!rs\_pin@{rs\_pin}}
+\index{rs\_pin@{rs\_pin}!Lcd\_HandleTypeDef@{Lcd\_HandleTypeDef}}
+\doxysubsubsection{\texorpdfstring{rs\_pin}{rs\_pin}}
+{\footnotesize\ttfamily \mbox{\hyperlink{lcd_8h_a52d3b2f0ccdbb6bacc93c0d892c3a65e}{Lcd\+\_\+\+Pin\+Type}} Lcd\+\_\+\+Handle\+Type\+Def\+::rs\+\_\+pin}
+
+\mbox{\Hypertarget{struct_lcd___handle_type_def_ab76b4962477acac2c6bec45305a326cd}\label{struct_lcd___handle_type_def_ab76b4962477acac2c6bec45305a326cd}} 
+\index{Lcd\_HandleTypeDef@{Lcd\_HandleTypeDef}!rs\_port@{rs\_port}}
+\index{rs\_port@{rs\_port}!Lcd\_HandleTypeDef@{Lcd\_HandleTypeDef}}
+\doxysubsubsection{\texorpdfstring{rs\_port}{rs\_port}}
+{\footnotesize\ttfamily \mbox{\hyperlink{lcd_8h_a5032730cd6aec5706ab225bf2693521d}{Lcd\+\_\+\+Port\+Type}} Lcd\+\_\+\+Handle\+Type\+Def\+::rs\+\_\+port}
+

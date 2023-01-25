@@ -1,0 +1,91 @@
+\hypertarget{1wire_8c}{}\doxysection{Dokumentacja pliku Components/\+Src/1wire.c}
+\label{1wire_8c}\index{Components/Src/1wire.c@{Components/Src/1wire.c}}
+{\ttfamily \#include \char`\"{}1wire.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}gpio.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}tim.\+h\char`\"{}}\newline
+\doxysubsection*{Funkcje}
+\begin{DoxyCompactItemize}
+\item 
+HAL\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{1wire_8c_aa95458a4d0bdde31c04650b98e0bd13b}{wire\+\_\+init}} (void)
+\begin{DoxyCompactList}\small\item\em Inicjalizacja 1-\/wire. \end{DoxyCompactList}\item 
+HAL\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{1wire_8c_ae8869e824bb6f4eda76e4700d39ccd86}{wire\+\_\+reset}} (void)
+\begin{DoxyCompactList}\small\item\em Przeslanie sekwencji reset przez 1-\/wire. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{1wire_8c_a715791bd666fe3f077ab5018afb8c9b9}{wire\+\_\+read}} (void)
+\begin{DoxyCompactList}\small\item\em Odczytanie danych przez 1-\/wire. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{1wire_8c_a6f04eda512b05c912390b75620d627bb}{wire\+\_\+write}} (uint8\+\_\+t byte)
+\begin{DoxyCompactList}\small\item\em Wysyłanie danych do czujnika. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{1wire_8c_a9b3d38cd8ac010678cde193a4a891345}{wire\+\_\+crc}} (const uint8\+\_\+t $\ast$data, int len)
+\begin{DoxyCompactList}\small\item\em Policzenie sumy kontrolnej. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Dokumentacja funkcji}
+\mbox{\Hypertarget{1wire_8c_a9b3d38cd8ac010678cde193a4a891345}\label{1wire_8c_a9b3d38cd8ac010678cde193a4a891345}} 
+\index{1wire.c@{1wire.c}!wire\_crc@{wire\_crc}}
+\index{wire\_crc@{wire\_crc}!1wire.c@{1wire.c}}
+\doxysubsubsection{\texorpdfstring{wire\_crc()}{wire\_crc()}}
+{\footnotesize\ttfamily uint8\+\_\+t wire\+\_\+crc (\begin{DoxyParamCaption}\item[{const uint8\+\_\+t $\ast$}]{data,  }\item[{int}]{len }\end{DoxyParamCaption})}
+
+
+
+Policzenie sumy kontrolnej. 
+
+Pozwala na sprawdzenie powodzenia komunikacji.
+
+
+\begin{DoxyParams}{Parametry}
+{\em data} & Przesłane dane. \\
+\hline
+{\em len} & Długośc przesyłanej inforamcji. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{1wire_8c_aa95458a4d0bdde31c04650b98e0bd13b}\label{1wire_8c_aa95458a4d0bdde31c04650b98e0bd13b}} 
+\index{1wire.c@{1wire.c}!wire\_init@{wire\_init}}
+\index{wire\_init@{wire\_init}!1wire.c@{1wire.c}}
+\doxysubsubsection{\texorpdfstring{wire\_init()}{wire\_init()}}
+{\footnotesize\ttfamily HAL\+\_\+\+Status\+Type\+Def wire\+\_\+init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Inicjalizacja 1-\/wire. 
+
+Uruchamia licznik 6 wykorzystywany do dalszej komunikacji \begin{DoxyReturn}{Zwraca}
+HAL\+\_\+\+OK/\+HAL\+\_\+\+ERROR zależnie od stanu licznika. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{1wire_8c_a715791bd666fe3f077ab5018afb8c9b9}\label{1wire_8c_a715791bd666fe3f077ab5018afb8c9b9}} 
+\index{1wire.c@{1wire.c}!wire\_read@{wire\_read}}
+\index{wire\_read@{wire\_read}!1wire.c@{1wire.c}}
+\doxysubsubsection{\texorpdfstring{wire\_read()}{wire\_read()}}
+{\footnotesize\ttfamily uint8\+\_\+t wire\+\_\+read (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Odczytanie danych przez 1-\/wire. 
+
+Odczytanie 8 bitów oraz połączenie i w bajt. \mbox{\Hypertarget{1wire_8c_ae8869e824bb6f4eda76e4700d39ccd86}\label{1wire_8c_ae8869e824bb6f4eda76e4700d39ccd86}} 
+\index{1wire.c@{1wire.c}!wire\_reset@{wire\_reset}}
+\index{wire\_reset@{wire\_reset}!1wire.c@{1wire.c}}
+\doxysubsubsection{\texorpdfstring{wire\_reset()}{wire\_reset()}}
+{\footnotesize\ttfamily HAL\+\_\+\+Status\+Type\+Def wire\+\_\+reset (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Przeslanie sekwencji reset przez 1-\/wire. 
+
+\begin{DoxyReturn}{Zwraca}
+HAL\+\_\+\+OK/\+HAL\+\_\+\+ERROR zależnie od odp. czujnika. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{1wire_8c_a6f04eda512b05c912390b75620d627bb}\label{1wire_8c_a6f04eda512b05c912390b75620d627bb}} 
+\index{1wire.c@{1wire.c}!wire\_write@{wire\_write}}
+\index{wire\_write@{wire\_write}!1wire.c@{1wire.c}}
+\doxysubsubsection{\texorpdfstring{wire\_write()}{wire\_write()}}
+{\footnotesize\ttfamily void wire\+\_\+write (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{byte }\end{DoxyParamCaption})}
+
+
+
+Wysyłanie danych do czujnika. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em byte} & bajt danych który zostanie przesłany. \\
+\hline
+\end{DoxyParams}

@@ -6,7 +6,9 @@ HAL_StatusTypeDef wire_init(void)
 {
   return HAL_TIM_Base_Start(&htim6);
 }
-
+/// Funkcja pozwalajaca na ustawienie dokladnych opoznien wymaganych przez standard 1-wire.
+///
+/// Tyle.
 static void delay_us(uint32_t us)
 {
   __HAL_TIM_SET_COUNTER(&htim6, 0);

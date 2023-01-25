@@ -1,0 +1,234 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.6"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Regulator prędkości obrotowej: Plik źródłowy Components/Inc/lcd.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+  $(document).ready(function() { init_search(); });
+/* @license-end */
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Regulator prędkości obrotowej
+   </div>
+   <div id="projectbrief">Projekt zaliczeniowy na przedmiot Systemy mikroprocesorowe</div>
+  </td>
+    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect"                onmouseover="return searchBox.OnSearchSelectShow()"                onmouseout="return searchBox.OnSearchSelectHide()">&#160;</span>
+          <input type="text" id="MSearchField" value="" placeholder="Szukaj" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano przez Doxygen 1.9.6 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('lcd_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Wczytywanie...</div>
+<div class="SRStatus" id="Searching">Szukanie...</div>
+<div class="SRStatus" id="NoMatches">Brak dopasowań</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">lcd.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="lcd_8h.html">Idź do dokumentacji tego pliku.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> * lcd.h</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> *  Created on: 10/06/2018</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> *      Author: Olivier Van den Eede</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#ifndef LCD_H_</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#define LCD_H_</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;stm32f7xx_hal.h&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;string.h&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;stdio.h&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;main.h&quot;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment">// #define LCD20xN      // For 20xN LCDs</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="lcd_8h.html#a6f09e6ce3df3c7508268c6d669c115bd">   17</a></span><span class="preprocessor">#define LCD16xN         </span><span class="comment">// For 16xN LCDs</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment">// For row start addresses</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keyword">extern</span> <span class="keyword">const</span> uint8_t <a class="code hl_variable" href="lcd_8h.html#a4be6f3b251ac82300f2047124369e92d">ROW_16</a>[];</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="keyword">extern</span> <span class="keyword">const</span> uint8_t <a class="code hl_variable" href="lcd_8h.html#a8ce7cee6a792ba94fce40e64a8a593bd">ROW_20</a>[];</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="comment">/************************************** Command register **************************************/</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="lcd_8h.html#a221b02b65527a670a158a9b1387e877c">   24</a></span><span class="preprocessor">#define CLEAR_DISPLAY 0x01</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="lcd_8h.html#a132a90af728916a595bcf5a52cfac21c">   26</a></span><span class="preprocessor">#define RETURN_HOME 0x02</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="lcd_8h.html#aa609aa58e71261c40627750bbaa1ca1c">   28</a></span><span class="preprocessor">#define ENTRY_MODE_SET 0x04</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="lcd_8h.html#a1e8afedf48dcf376594702002a8162a2">   29</a></span><span class="preprocessor">#define OPT_S   0x01                    </span><span class="comment">// Shift entire display to right</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="lcd_8h.html#a6a16603ffeb92e30149567b72b511cea">   30</a></span><span class="preprocessor">#define OPT_INC 0x02                    </span><span class="comment">// Cursor increment</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="lcd_8h.html#a24f46498474a578f07d9d30d5dc48b0a">   32</a></span><span class="preprocessor">#define DISPLAY_ON_OFF_CONTROL 0x08</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="lcd_8h.html#a6f46fa48b21b175bed7a6340c14ee1db">   33</a></span><span class="preprocessor">#define OPT_D   0x04                    </span><span class="comment">// Turn on display</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="lcd_8h.html#a0562e9e9aaffa9b708586e4745fb4b9b">   34</a></span><span class="preprocessor">#define OPT_C   0x02                    </span><span class="comment">// Turn on cursor</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="lcd_8h.html#a81b6f4d86bf9b1917f279d22cf98d95b">   35</a></span><span class="preprocessor">#define OPT_B   0x01                    </span><span class="comment">// Turn on cursor blink</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="lcd_8h.html#aee44c28b3237b814efa557a2429023b8">   37</a></span><span class="preprocessor">#define CURSOR_DISPLAY_SHIFT 0x10       </span><span class="comment">// Move and shift cursor</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="lcd_8h.html#a0001d0dad84f4580afc8e5efdd506158">   38</a></span><span class="preprocessor">#define OPT_SC 0x08</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="lcd_8h.html#a89880243a59be6b413f8e3c2b5085524">   39</a></span><span class="preprocessor">#define OPT_RL 0x04</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="lcd_8h.html#a59f35c48e6411073b387a95fa81df8be">   41</a></span><span class="preprocessor">#define FUNCTION_SET 0x20</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="lcd_8h.html#a9671212c2a07be77cc90ae24ecb706fb">   42</a></span><span class="preprocessor">#define OPT_DL 0x10                     </span><span class="comment">// Set interface data length</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="lcd_8h.html#a057f13d946ace762a29f12136e8d0deb">   43</a></span><span class="preprocessor">#define OPT_N 0x08                      </span><span class="comment">// Set number of display lines</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="lcd_8h.html#a976e46f9c07b79f0da652238441cf3b7">   44</a></span><span class="preprocessor">#define OPT_F 0x04                      </span><span class="comment">// Set alternate font</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="lcd_8h.html#ac8f9cf3f15e7eebcb7abcb5c7f8cc1bb">   45</a></span><span class="preprocessor">#define SETCGRAM_ADDR 0x040</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="lcd_8h.html#a83a17f2aebcd5eefff0ff4d0439fb929">   46</a></span><span class="preprocessor">#define SET_DDRAM_ADDR 0x80             </span><span class="comment">// Set DDRAM address</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="comment">/************************************** Helper macros **************************************/</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="lcd_8h.html#a7842602635de866f58163d938460a2fa">   50</a></span><span class="preprocessor">#define DELAY(X) HAL_Delay(X)</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="comment">/************************************** LCD defines **************************************/</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="lcd_8h.html#a3b4a905bfe895c8abb17f2ff9e8d91ec">   54</a></span><span class="preprocessor">#define LCD_NIB 4</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="lcd_8h.html#aa700aac384bbe44ebaab96310a50c9d8">   55</a></span><span class="preprocessor">#define LCD_BYTE 8</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="lcd_8h.html#abb7a5e0607e71d97379c04e5d707b89c">   56</a></span><span class="preprocessor">#define LCD_DATA_REG 1</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="lcd_8h.html#aabf117bdc3cce4e1919bbfee78127c71">   57</a></span><span class="preprocessor">#define LCD_COMMAND_REG 0</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="comment">/************************************** LCD typedefs **************************************/</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="lcd_8h.html#a5032730cd6aec5706ab225bf2693521d">   61</a></span><span class="preprocessor">#define Lcd_PortType GPIO_TypeDef*</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="lcd_8h.html#a52d3b2f0ccdbb6bacc93c0d892c3a65e">   62</a></span><span class="preprocessor">#define Lcd_PinType uint16_t</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="lcd_8h.html#a3f91f51a22930c98fed044e5c3c6da4d">   67</a></span><span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="lcd_8h.html#a3f91f51a22930c98fed044e5c3c6da4da6e6400186caf21a8d0e79a9514aca0ab">   68</a></span>    <a class="code hl_enumvalue" href="lcd_8h.html#a3f91f51a22930c98fed044e5c3c6da4da6e6400186caf21a8d0e79a9514aca0ab">LCD_4_BIT_MODE</a>,</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <a class="code hl_enumvalue" href="lcd_8h.html#a3f91f51a22930c98fed044e5c3c6da4da480df27ddfffd0244eed2c72ed6f8bd2">LCD_8_BIT_MODE</a></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="lcd_8h.html#a3f91f51a22930c98fed044e5c3c6da4da480df27ddfffd0244eed2c72ed6f8bd2">   70</a></span>} <a class="code hl_enumeration" href="lcd_8h.html#a3f91f51a22930c98fed044e5c3c6da4d">Lcd_ModeTypeDef</a>;</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno"><a class="line" href="struct_lcd___handle_type_def.html">   81</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno"><a class="line" href="struct_lcd___handle_type_def.html#a85443c7275f3eaa2d895b2fb27362e2d">   82</a></span>    <a class="code hl_define" href="lcd_8h.html#a5032730cd6aec5706ab225bf2693521d">Lcd_PortType</a> * <a class="code hl_variable" href="struct_lcd___handle_type_def.html#a85443c7275f3eaa2d895b2fb27362e2d">data_port</a>;</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno"><a class="line" href="struct_lcd___handle_type_def.html#afd53a7a6684d30d3011a60bda522f930">   83</a></span>    <a class="code hl_define" href="lcd_8h.html#a52d3b2f0ccdbb6bacc93c0d892c3a65e">Lcd_PinType</a> * <a class="code hl_variable" href="struct_lcd___handle_type_def.html#afd53a7a6684d30d3011a60bda522f930">data_pin</a>;</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno"><a class="line" href="struct_lcd___handle_type_def.html#ab76b4962477acac2c6bec45305a326cd">   85</a></span>    <a class="code hl_define" href="lcd_8h.html#a5032730cd6aec5706ab225bf2693521d">Lcd_PortType</a> <a class="code hl_variable" href="struct_lcd___handle_type_def.html#ab76b4962477acac2c6bec45305a326cd">rs_port</a>;</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno"><a class="line" href="struct_lcd___handle_type_def.html#a90cc1c6b19c7ee788918ccb69f671567">   86</a></span>    <a class="code hl_define" href="lcd_8h.html#a52d3b2f0ccdbb6bacc93c0d892c3a65e">Lcd_PinType</a> <a class="code hl_variable" href="struct_lcd___handle_type_def.html#a90cc1c6b19c7ee788918ccb69f671567">rs_pin</a>;</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno"><a class="line" href="struct_lcd___handle_type_def.html#ae616c6be7148be19c2f2afffe395cc20">   88</a></span>    <a class="code hl_define" href="lcd_8h.html#a5032730cd6aec5706ab225bf2693521d">Lcd_PortType</a> <a class="code hl_variable" href="struct_lcd___handle_type_def.html#ae616c6be7148be19c2f2afffe395cc20">en_port</a>;</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno"><a class="line" href="struct_lcd___handle_type_def.html#ac59a21ab5368efee4f04319141a109a3">   89</a></span>    <a class="code hl_define" href="lcd_8h.html#a52d3b2f0ccdbb6bacc93c0d892c3a65e">Lcd_PinType</a> <a class="code hl_variable" href="struct_lcd___handle_type_def.html#ac59a21ab5368efee4f04319141a109a3">en_pin</a>;</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno"><a class="line" href="struct_lcd___handle_type_def.html#aae0e33d2bc934c9dc5024d4442082f1c">   91</a></span>    <a class="code hl_enumeration" href="lcd_8h.html#a3f91f51a22930c98fed044e5c3c6da4d">Lcd_ModeTypeDef</a> <a class="code hl_variable" href="struct_lcd___handle_type_def.html#aae0e33d2bc934c9dc5024d4442082f1c">mode</a>;</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>} <a class="code hl_struct" href="struct_lcd___handle_type_def.html">Lcd_HandleTypeDef</a>;</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="comment">/************************************** Public functions **************************************/</span></div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span><span class="keywordtype">void</span> <a class="code hl_function" href="lcd_8h.html#a812f628ceebeae7c8acdd608d13467b5">Lcd_init</a>(<a class="code hl_struct" href="struct_lcd___handle_type_def.html">Lcd_HandleTypeDef</a> * lcd);</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span><span class="keywordtype">void</span> <a class="code hl_function" href="lcd_8h.html#adff7b4c234b2bb99e34108012953af2f">Lcd_float</a>(<a class="code hl_struct" href="struct_lcd___handle_type_def.html">Lcd_HandleTypeDef</a> * lcd, <span class="keywordtype">float</span> number);</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span><span class="keywordtype">void</span> <a class="code hl_function" href="lcd_8h.html#aeb7d8cf010d0431082793c35d2f3986a">Lcd_int</a>(<a class="code hl_struct" href="struct_lcd___handle_type_def.html">Lcd_HandleTypeDef</a> * lcd, <span class="keywordtype">int</span> number);</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span><span class="keywordtype">void</span> <a class="code hl_function" href="lcd_8h.html#a41b19f1767241abaad51ba81820a1f8b">Lcd_string</a>(<a class="code hl_struct" href="struct_lcd___handle_type_def.html">Lcd_HandleTypeDef</a> * lcd, <span class="keywordtype">char</span> * <span class="keywordtype">string</span>);</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span><span class="keywordtype">void</span> <a class="code hl_function" href="lcd_8h.html#ae31b55ceec6ac19f04e4f8afe641d304">Lcd_cursor</a>(<a class="code hl_struct" href="struct_lcd___handle_type_def.html">Lcd_HandleTypeDef</a> * lcd, uint8_t row, uint8_t col);</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span><span class="comment">// UStawienie wykorzystywanych Pinów. Ustawienie trybu pracy.</span></div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span><span class="comment"></span><a class="code hl_struct" href="struct_lcd___handle_type_def.html">Lcd_HandleTypeDef</a> <a class="code hl_function" href="lcd_8h.html#a555f8cc26de31bbf138597e8a658d43f">Lcd_create</a>(</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>        <a class="code hl_define" href="lcd_8h.html#a5032730cd6aec5706ab225bf2693521d">Lcd_PortType</a> port[], <a class="code hl_define" href="lcd_8h.html#a52d3b2f0ccdbb6bacc93c0d892c3a65e">Lcd_PinType</a> pin[],</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>        <a class="code hl_define" href="lcd_8h.html#a5032730cd6aec5706ab225bf2693521d">Lcd_PortType</a> rs_port, <a class="code hl_define" href="lcd_8h.html#a52d3b2f0ccdbb6bacc93c0d892c3a65e">Lcd_PinType</a> rs_pin,</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>        <a class="code hl_define" href="lcd_8h.html#a5032730cd6aec5706ab225bf2693521d">Lcd_PortType</a> en_port, <a class="code hl_define" href="lcd_8h.html#a52d3b2f0ccdbb6bacc93c0d892c3a65e">Lcd_PinType</a> en_pin, <a class="code hl_enumeration" href="lcd_8h.html#a3f91f51a22930c98fed044e5c3c6da4d">Lcd_ModeTypeDef</a> mode);</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span><span class="keywordtype">void</span> <a class="code hl_function" href="lcd_8h.html#aad2da0b28baec7977d14487555a6d7f0">Lcd_define_char</a>(<a class="code hl_struct" href="struct_lcd___handle_type_def.html">Lcd_HandleTypeDef</a> * lcd, uint8_t code, uint8_t bitmap[]);</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span><span class="keywordtype">void</span> <a class="code hl_function" href="lcd_8h.html#ad2be8694070f64fe09c1e35469a568b6">Lcd_clear</a>(<a class="code hl_struct" href="struct_lcd___handle_type_def.html">Lcd_HandleTypeDef</a> * lcd);</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span> </div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span><span class="preprocessor">#endif </span><span class="comment">/* LCD_H_ */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="alcd_8h_html_a3f91f51a22930c98fed044e5c3c6da4d"><div class="ttname"><a href="lcd_8h.html#a3f91f51a22930c98fed044e5c3c6da4d">Lcd_ModeTypeDef</a></div><div class="ttdeci">Lcd_ModeTypeDef</div><div class="ttdoc">Tryby pracy wyświetlacza.</div><div class="ttdef"><b>Definition:</b> lcd.h:67</div></div>
+<div class="ttc" id="alcd_8h_html_a3f91f51a22930c98fed044e5c3c6da4da480df27ddfffd0244eed2c72ed6f8bd2"><div class="ttname"><a href="lcd_8h.html#a3f91f51a22930c98fed044e5c3c6da4da480df27ddfffd0244eed2c72ed6f8bd2">LCD_8_BIT_MODE</a></div><div class="ttdeci">@ LCD_8_BIT_MODE</div><div class="ttdef"><b>Definition:</b> lcd.h:69</div></div>
+<div class="ttc" id="alcd_8h_html_a3f91f51a22930c98fed044e5c3c6da4da6e6400186caf21a8d0e79a9514aca0ab"><div class="ttname"><a href="lcd_8h.html#a3f91f51a22930c98fed044e5c3c6da4da6e6400186caf21a8d0e79a9514aca0ab">LCD_4_BIT_MODE</a></div><div class="ttdeci">@ LCD_4_BIT_MODE</div><div class="ttdef"><b>Definition:</b> lcd.h:68</div></div>
+<div class="ttc" id="alcd_8h_html_a41b19f1767241abaad51ba81820a1f8b"><div class="ttname"><a href="lcd_8h.html#a41b19f1767241abaad51ba81820a1f8b">Lcd_string</a></div><div class="ttdeci">void Lcd_string(Lcd_HandleTypeDef *lcd, char *string)</div><div class="ttdoc">Wypisanie ciągu znaków w miejscu kursora.</div><div class="ttdef"><b>Definition:</b> lcd.c:82</div></div>
+<div class="ttc" id="alcd_8h_html_a4be6f3b251ac82300f2047124369e92d"><div class="ttname"><a href="lcd_8h.html#a4be6f3b251ac82300f2047124369e92d">ROW_16</a></div><div class="ttdeci">const uint8_t ROW_16[]</div><div class="ttdef"><b>Definition:</b> lcd.c:9</div></div>
+<div class="ttc" id="alcd_8h_html_a5032730cd6aec5706ab225bf2693521d"><div class="ttname"><a href="lcd_8h.html#a5032730cd6aec5706ab225bf2693521d">Lcd_PortType</a></div><div class="ttdeci">#define Lcd_PortType</div><div class="ttdef"><b>Definition:</b> lcd.h:61</div></div>
+<div class="ttc" id="alcd_8h_html_a52d3b2f0ccdbb6bacc93c0d892c3a65e"><div class="ttname"><a href="lcd_8h.html#a52d3b2f0ccdbb6bacc93c0d892c3a65e">Lcd_PinType</a></div><div class="ttdeci">#define Lcd_PinType</div><div class="ttdef"><b>Definition:</b> lcd.h:62</div></div>
+<div class="ttc" id="alcd_8h_html_a555f8cc26de31bbf138597e8a658d43f"><div class="ttname"><a href="lcd_8h.html#a555f8cc26de31bbf138597e8a658d43f">Lcd_create</a></div><div class="ttdeci">Lcd_HandleTypeDef Lcd_create(Lcd_PortType port[], Lcd_PinType pin[], Lcd_PortType rs_port, Lcd_PinType rs_pin, Lcd_PortType en_port, Lcd_PinType en_pin, Lcd_ModeTypeDef mode)</div><div class="ttdoc">Inicjalizacja struktury wyświetlacza.</div><div class="ttdef"><b>Definition:</b> lcd.c:21</div></div>
+<div class="ttc" id="alcd_8h_html_a812f628ceebeae7c8acdd608d13467b5"><div class="ttname"><a href="lcd_8h.html#a812f628ceebeae7c8acdd608d13467b5">Lcd_init</a></div><div class="ttdeci">void Lcd_init(Lcd_HandleTypeDef *lcd)</div><div class="ttdoc">Inicjalizacja wyświetlacza.</div><div class="ttdef"><b>Definition:</b> lcd.c:44</div></div>
+<div class="ttc" id="alcd_8h_html_a8ce7cee6a792ba94fce40e64a8a593bd"><div class="ttname"><a href="lcd_8h.html#a8ce7cee6a792ba94fce40e64a8a593bd">ROW_20</a></div><div class="ttdeci">const uint8_t ROW_20[]</div><div class="ttdef"><b>Definition:</b> lcd.c:10</div></div>
+<div class="ttc" id="alcd_8h_html_aad2da0b28baec7977d14487555a6d7f0"><div class="ttname"><a href="lcd_8h.html#aad2da0b28baec7977d14487555a6d7f0">Lcd_define_char</a></div><div class="ttdeci">void Lcd_define_char(Lcd_HandleTypeDef *lcd, uint8_t code, uint8_t bitmap[])</div><div class="ttdef"><b>Definition:</b> lcd.c:107</div></div>
+<div class="ttc" id="alcd_8h_html_ad2be8694070f64fe09c1e35469a568b6"><div class="ttname"><a href="lcd_8h.html#ad2be8694070f64fe09c1e35469a568b6">Lcd_clear</a></div><div class="ttdeci">void Lcd_clear(Lcd_HandleTypeDef *lcd)</div><div class="ttdoc">Wyczyszczenie wyświetlacza.</div><div class="ttdef"><b>Definition:</b> lcd.c:103</div></div>
+<div class="ttc" id="alcd_8h_html_adff7b4c234b2bb99e34108012953af2f"><div class="ttname"><a href="lcd_8h.html#adff7b4c234b2bb99e34108012953af2f">Lcd_float</a></div><div class="ttdeci">void Lcd_float(Lcd_HandleTypeDef *lcd, float number)</div><div class="ttdoc">Wypisanie liczby zmiennoprzecinkowej w miejscu kursora.</div><div class="ttdef"><b>Definition:</b> lcd.c:61</div></div>
+<div class="ttc" id="alcd_8h_html_ae31b55ceec6ac19f04e4f8afe641d304"><div class="ttname"><a href="lcd_8h.html#ae31b55ceec6ac19f04e4f8afe641d304">Lcd_cursor</a></div><div class="ttdeci">void Lcd_cursor(Lcd_HandleTypeDef *lcd, uint8_t row, uint8_t col)</div><div class="ttdoc">Ustawienie kursora.</div><div class="ttdef"><b>Definition:</b> lcd.c:91</div></div>
+<div class="ttc" id="alcd_8h_html_aeb7d8cf010d0431082793c35d2f3986a"><div class="ttname"><a href="lcd_8h.html#aeb7d8cf010d0431082793c35d2f3986a">Lcd_int</a></div><div class="ttdeci">void Lcd_int(Lcd_HandleTypeDef *lcd, int number)</div><div class="ttdoc">Wypisanie liczby całkowitej w miejscu kursora.</div><div class="ttdef"><b>Definition:</b> lcd.c:75</div></div>
+<div class="ttc" id="astruct_lcd___handle_type_def_html"><div class="ttname"><a href="struct_lcd___handle_type_def.html">Lcd_HandleTypeDef</a></div><div class="ttdoc">Struktura opisująca wyświetlacz LCD.</div><div class="ttdef"><b>Definition:</b> lcd.h:81</div></div>
+<div class="ttc" id="astruct_lcd___handle_type_def_html_a85443c7275f3eaa2d895b2fb27362e2d"><div class="ttname"><a href="struct_lcd___handle_type_def.html#a85443c7275f3eaa2d895b2fb27362e2d">Lcd_HandleTypeDef::data_port</a></div><div class="ttdeci">Lcd_PortType * data_port</div><div class="ttdef"><b>Definition:</b> lcd.h:82</div></div>
+<div class="ttc" id="astruct_lcd___handle_type_def_html_a90cc1c6b19c7ee788918ccb69f671567"><div class="ttname"><a href="struct_lcd___handle_type_def.html#a90cc1c6b19c7ee788918ccb69f671567">Lcd_HandleTypeDef::rs_pin</a></div><div class="ttdeci">Lcd_PinType rs_pin</div><div class="ttdef"><b>Definition:</b> lcd.h:86</div></div>
+<div class="ttc" id="astruct_lcd___handle_type_def_html_aae0e33d2bc934c9dc5024d4442082f1c"><div class="ttname"><a href="struct_lcd___handle_type_def.html#aae0e33d2bc934c9dc5024d4442082f1c">Lcd_HandleTypeDef::mode</a></div><div class="ttdeci">Lcd_ModeTypeDef mode</div><div class="ttdef"><b>Definition:</b> lcd.h:91</div></div>
+<div class="ttc" id="astruct_lcd___handle_type_def_html_ab76b4962477acac2c6bec45305a326cd"><div class="ttname"><a href="struct_lcd___handle_type_def.html#ab76b4962477acac2c6bec45305a326cd">Lcd_HandleTypeDef::rs_port</a></div><div class="ttdeci">Lcd_PortType rs_port</div><div class="ttdef"><b>Definition:</b> lcd.h:85</div></div>
+<div class="ttc" id="astruct_lcd___handle_type_def_html_ac59a21ab5368efee4f04319141a109a3"><div class="ttname"><a href="struct_lcd___handle_type_def.html#ac59a21ab5368efee4f04319141a109a3">Lcd_HandleTypeDef::en_pin</a></div><div class="ttdeci">Lcd_PinType en_pin</div><div class="ttdef"><b>Definition:</b> lcd.h:89</div></div>
+<div class="ttc" id="astruct_lcd___handle_type_def_html_ae616c6be7148be19c2f2afffe395cc20"><div class="ttname"><a href="struct_lcd___handle_type_def.html#ae616c6be7148be19c2f2afffe395cc20">Lcd_HandleTypeDef::en_port</a></div><div class="ttdeci">Lcd_PortType en_port</div><div class="ttdef"><b>Definition:</b> lcd.h:88</div></div>
+<div class="ttc" id="astruct_lcd___handle_type_def_html_afd53a7a6684d30d3011a60bda522f930"><div class="ttname"><a href="struct_lcd___handle_type_def.html#afd53a7a6684d30d3011a60bda522f930">Lcd_HandleTypeDef::data_pin</a></div><div class="ttdeci">Lcd_PinType * data_pin</div><div class="ttdef"><b>Definition:</b> lcd.h:83</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_08f45fe6822aeb4ce2bc268e3b1361be.html">Components</a></li><li class="navelem"><a class="el" href="dir_96c79051d9fe039b231771f1ed0545a7.html">Inc</a></li><li class="navelem"><a class="el" href="lcd_8h.html">lcd.h</a></li>
+    <li class="footer">Wygenerowano przez <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+  </ul>
+</div>
+</body>
+</html>

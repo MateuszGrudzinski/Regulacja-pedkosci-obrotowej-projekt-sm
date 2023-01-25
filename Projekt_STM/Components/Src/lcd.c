@@ -17,9 +17,7 @@ static void lcd_write(Lcd_HandleTypeDef * lcd, uint8_t data, uint8_t len);
 
 /************************************** Function definitions **************************************/
 
-/**
- * Create new Lcd_HandleTypeDef and initialize the Lcd
- */
+
 Lcd_HandleTypeDef Lcd_create(
 		Lcd_PortType port[], Lcd_PinType pin[],
 		Lcd_PortType rs_port, Lcd_PinType rs_pin,
@@ -43,9 +41,6 @@ Lcd_HandleTypeDef Lcd_create(
 	return lcd;
 }
 
-/**
- * Initialize 16x2-lcd without cursor
- */
 void Lcd_init(Lcd_HandleTypeDef * lcd)
 {
 	if(lcd->mode == LCD_4_BIT_MODE)
@@ -63,9 +58,6 @@ void Lcd_init(Lcd_HandleTypeDef * lcd)
 	lcd_write_command(lcd, ENTRY_MODE_SET | OPT_INC);			// Increment cursor
 }
 
-/**
- * Write a number on the current position
- */
 void Lcd_float(Lcd_HandleTypeDef * lcd, float number)
 {
 	char buffer[11];
@@ -86,9 +78,7 @@ void Lcd_int(Lcd_HandleTypeDef * lcd, int number)
 	sprintf(buffer, "%d", number);
 	Lcd_string(lcd, buffer);
 }
-/**
- * Write a string on the current position
- */
+
 void Lcd_string(Lcd_HandleTypeDef * lcd, char * string)
 {
 	for(uint8_t i = 0; i < strlen(string); i++)
@@ -97,9 +87,7 @@ void Lcd_string(Lcd_HandleTypeDef * lcd, char * string)
 	}
 }
 
-/**
- * Set the cursor position
- */
+
 void Lcd_cursor(Lcd_HandleTypeDef * lcd, uint8_t row, uint8_t col)
 {
 	#ifdef LCD20xN
@@ -111,9 +99,7 @@ void Lcd_cursor(Lcd_HandleTypeDef * lcd, uint8_t row, uint8_t col)
 	#endif
 }
 
-/**
- * Clear the screen
- */
+
 void Lcd_clear(Lcd_HandleTypeDef * lcd) {
 	lcd_write_command(lcd, CLEAR_DISPLAY);
 }
@@ -129,9 +115,7 @@ void Lcd_define_char(Lcd_HandleTypeDef * lcd, uint8_t code, uint8_t bitmap[]){
 
 /************************************** Static function definition **************************************/
 
-/**
- * Write a byte to the command register
- */
+
 void lcd_write_command(Lcd_HandleTypeDef * lcd, uint8_t command)
 {
 	HAL_GPIO_WritePin(lcd->rs_port, lcd->rs_pin, LCD_COMMAND_REG);		// Write to command register
@@ -148,9 +132,7 @@ void lcd_write_command(Lcd_HandleTypeDef * lcd, uint8_t command)
 
 }
 
-/**
- * Write a byte to the data register
- */
+
 void lcd_write_data(Lcd_HandleTypeDef * lcd, uint8_t data)
 {
 	HAL_GPIO_WritePin(lcd->rs_port, lcd->rs_pin, LCD_DATA_REG);			// Write to data register
@@ -167,9 +149,7 @@ void lcd_write_data(Lcd_HandleTypeDef * lcd, uint8_t data)
 
 }
 
-/**
- * Set len bits on the bus and toggle the enable line
- */
+
 void lcd_write(Lcd_HandleTypeDef * lcd, uint8_t data, uint8_t len)
 {
 	for(uint8_t i = 0; i < len; i++)

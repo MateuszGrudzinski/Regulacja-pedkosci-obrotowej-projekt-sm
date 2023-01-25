@@ -61,12 +61,23 @@ extern const uint8_t ROW_20[];
 #define Lcd_PortType GPIO_TypeDef*
 #define Lcd_PinType uint16_t
 
+/// Tryby pracy wyświetlacza.
+///
+/// Pozwala na wybranie pracy w trybie 4 lub 8 bitowym.
 typedef enum {
 	LCD_4_BIT_MODE,
 	LCD_8_BIT_MODE
 } Lcd_ModeTypeDef;
 
-
+/// Struktura opisująca wyświetlacz LCD
+///
+/// Zawiera informację o urzywanych pinach oraz trybie pracy.
+/// @param data_port Port zawierający Piny Danych.
+/// @param data_pin Ustawienie pinów danych wykorzystywanych do komunikacji z wyświetlaczem.
+/// @param rs_port Port zawierający pin Resetu.
+/// @param rs_pin Pin resetu.
+/// @param en_port Port zawierający pin Enable.
+/// @param en_pin Pin enable.
 typedef struct {
 	Lcd_PortType * data_port;
 	Lcd_PinType * data_pin;
@@ -83,16 +94,46 @@ typedef struct {
 
 
 /************************************** Public functions **************************************/
+///
+
+///Inicjalizacja wyświetlacza.
+///
+///Ustawienie kursora, wyczyszczenie ekranu.
+///@param *lcd handler wyświetlacza.
 void Lcd_init(Lcd_HandleTypeDef * lcd);
+///Wypisanie liczby zmiennoprzecinkowej w miejscu kursora.
+///
+///@param *lcd handler wyświetlacza.
+///@param number liczba float do wyświetlenia.
 void Lcd_float(Lcd_HandleTypeDef * lcd, float number);
+///Wypisanie liczby całkowitej w miejscu kursora.
+///
+///@param *lcd handler wyświetlacza.
+///@param number liczba int do wyświetlenia.
 void Lcd_int(Lcd_HandleTypeDef * lcd, int number);
+///Wypisanie ciągu znaków w miejscu kursora.
+///
+///@param *lcd handler wyświetlacza.
+///@param string Tablica znaków do wyświetlenia.
 void Lcd_string(Lcd_HandleTypeDef * lcd, char * string);
+///Ustawienie kursora.
+///
+///@param *lcd handler wyświetlacza.
+///@param row Indeks rzędu.
+///@param col Indeks kolumny.
 void Lcd_cursor(Lcd_HandleTypeDef * lcd, uint8_t row, uint8_t col);
+///Inicjalizacja struktury wyświetlacza.
+///
+// UStawienie wykorzystywanych Pinów. Ustawienie trybu pracy.
+///@see Lcd_HandleTypeDef.
 Lcd_HandleTypeDef Lcd_create(
 		Lcd_PortType port[], Lcd_PinType pin[],
 		Lcd_PortType rs_port, Lcd_PinType rs_pin,
 		Lcd_PortType en_port, Lcd_PinType en_pin, Lcd_ModeTypeDef mode);
 void Lcd_define_char(Lcd_HandleTypeDef * lcd, uint8_t code, uint8_t bitmap[]);
+///Wyczyszczenie wyświetlacza.
+///
+///@param *lcd handler wyświetlacza.
 void Lcd_clear(Lcd_HandleTypeDef * lcd);
 
 #endif /* LCD_H_ */

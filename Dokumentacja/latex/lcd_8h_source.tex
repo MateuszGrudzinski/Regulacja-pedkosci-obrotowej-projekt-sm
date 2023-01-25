@@ -1,0 +1,105 @@
+\hypertarget{lcd_8h_source}{}\doxysection{lcd.\+h}
+\label{lcd_8h_source}\index{Components/Inc/lcd.h@{Components/Inc/lcd.h}}
+\mbox{\hyperlink{lcd_8h}{Idź do dokumentacji tego pliku.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ lcd.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ \ Created\ on:\ 10/06/2018}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ \ \ \ \ \ Author:\ Olivier\ Van\ den\ Eede}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ LCD\_H\_}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ LCD\_H\_}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}stm32f7xx\_hal.h"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}string.h"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}stdio.h"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}main.h"{}}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{comment}{//\ \#define\ LCD20xN\ \ \ \ \ \ //\ For\ 20xN\ LCDs}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ LCD16xN\ \ \ \ \ \ \ \ \ }\textcolor{comment}{//\ For\ 16xN\ LCDs}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{comment}{//\ For\ row\ start\ addresses}}
+\DoxyCodeLine{00020\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ \mbox{\hyperlink{lcd_8h_a4be6f3b251ac82300f2047124369e92d}{ROW\_16}}[];}
+\DoxyCodeLine{00021\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ \mbox{\hyperlink{lcd_8h_a8ce7cee6a792ba94fce40e64a8a593bd}{ROW\_20}}[];}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{comment}{/**************************************\ Command\ register\ **************************************/}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#define\ CLEAR\_DISPLAY\ 0x01}}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#define\ RETURN\_HOME\ 0x02}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#define\ ENTRY\_MODE\_SET\ 0x04}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#define\ OPT\_S\ \ \ 0x01\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//\ Shift\ entire\ display\ to\ right}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#define\ OPT\_INC\ 0x02\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//\ Cursor\ increment}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#define\ DISPLAY\_ON\_OFF\_CONTROL\ 0x08}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#define\ OPT\_D\ \ \ 0x04\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//\ Turn\ on\ display}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#define\ OPT\_C\ \ \ 0x02\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//\ Turn\ on\ cursor}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#define\ OPT\_B\ \ \ 0x01\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//\ Turn\ on\ cursor\ blink}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#define\ CURSOR\_DISPLAY\_SHIFT\ 0x10\ \ \ \ \ \ \ }\textcolor{comment}{//\ Move\ and\ shift\ cursor}}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#define\ OPT\_SC\ 0x08}}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#define\ OPT\_RL\ 0x04}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#define\ FUNCTION\_SET\ 0x20}}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#define\ OPT\_DL\ 0x10\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//\ Set\ interface\ data\ length}}
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#define\ OPT\_N\ 0x08\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//\ Set\ number\ of\ display\ lines}}
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#define\ OPT\_F\ 0x04\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//\ Set\ alternate\ font}}
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#define\ SETCGRAM\_ADDR\ 0x040}}
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#define\ SET\_DDRAM\_ADDR\ 0x80\ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//\ Set\ DDRAM\ address}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \textcolor{comment}{/**************************************\ Helper\ macros\ **************************************/}}
+\DoxyCodeLine{00050\ \textcolor{preprocessor}{\#define\ DELAY(X)\ HAL\_Delay(X)}}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \textcolor{comment}{/**************************************\ LCD\ defines\ **************************************/}}
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\#define\ LCD\_NIB\ 4}}
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\#define\ LCD\_BYTE\ 8}}
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#define\ LCD\_DATA\_REG\ 1}}
+\DoxyCodeLine{00057\ \textcolor{preprocessor}{\#define\ LCD\_COMMAND\_REG\ 0}}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \textcolor{comment}{/**************************************\ LCD\ typedefs\ **************************************/}}
+\DoxyCodeLine{00061\ \textcolor{preprocessor}{\#define\ Lcd\_PortType\ GPIO\_TypeDef*}}
+\DoxyCodeLine{00062\ \textcolor{preprocessor}{\#define\ Lcd\_PinType\ uint16\_t}}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00067\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00068\ \ \ \ \ \mbox{\hyperlink{lcd_8h_a3f91f51a22930c98fed044e5c3c6da4da6e6400186caf21a8d0e79a9514aca0ab}{LCD\_4\_BIT\_MODE}},}
+\DoxyCodeLine{00069\ \ \ \ \ \mbox{\hyperlink{lcd_8h_a3f91f51a22930c98fed044e5c3c6da4da480df27ddfffd0244eed2c72ed6f8bd2}{LCD\_8\_BIT\_MODE}}}
+\DoxyCodeLine{00070\ \}\ \mbox{\hyperlink{lcd_8h_a3f91f51a22930c98fed044e5c3c6da4d}{Lcd\_ModeTypeDef}};}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00081\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00082\ \ \ \ \ \mbox{\hyperlink{lcd_8h_a5032730cd6aec5706ab225bf2693521d}{Lcd\_PortType}}\ *\ \mbox{\hyperlink{struct_lcd___handle_type_def_a85443c7275f3eaa2d895b2fb27362e2d}{data\_port}};}
+\DoxyCodeLine{00083\ \ \ \ \ \mbox{\hyperlink{lcd_8h_a52d3b2f0ccdbb6bacc93c0d892c3a65e}{Lcd\_PinType}}\ *\ \mbox{\hyperlink{struct_lcd___handle_type_def_afd53a7a6684d30d3011a60bda522f930}{data\_pin}};}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \ \ \ \ \mbox{\hyperlink{lcd_8h_a5032730cd6aec5706ab225bf2693521d}{Lcd\_PortType}}\ \mbox{\hyperlink{struct_lcd___handle_type_def_ab76b4962477acac2c6bec45305a326cd}{rs\_port}};}
+\DoxyCodeLine{00086\ \ \ \ \ \mbox{\hyperlink{lcd_8h_a52d3b2f0ccdbb6bacc93c0d892c3a65e}{Lcd\_PinType}}\ \mbox{\hyperlink{struct_lcd___handle_type_def_a90cc1c6b19c7ee788918ccb69f671567}{rs\_pin}};}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \ \ \ \ \mbox{\hyperlink{lcd_8h_a5032730cd6aec5706ab225bf2693521d}{Lcd\_PortType}}\ \mbox{\hyperlink{struct_lcd___handle_type_def_ae616c6be7148be19c2f2afffe395cc20}{en\_port}};}
+\DoxyCodeLine{00089\ \ \ \ \ \mbox{\hyperlink{lcd_8h_a52d3b2f0ccdbb6bacc93c0d892c3a65e}{Lcd\_PinType}}\ \mbox{\hyperlink{struct_lcd___handle_type_def_ac59a21ab5368efee4f04319141a109a3}{en\_pin}};}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \ \ \ \ \mbox{\hyperlink{lcd_8h_a3f91f51a22930c98fed044e5c3c6da4d}{Lcd\_ModeTypeDef}}\ \mbox{\hyperlink{struct_lcd___handle_type_def_aae0e33d2bc934c9dc5024d4442082f1c}{mode}};}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \}\ \mbox{\hyperlink{struct_lcd___handle_type_def}{Lcd\_HandleTypeDef}};}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \textcolor{comment}{/**************************************\ Public\ functions\ **************************************/}}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00103\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{lcd_8h_a812f628ceebeae7c8acdd608d13467b5}{Lcd\_init}}(\mbox{\hyperlink{struct_lcd___handle_type_def}{Lcd\_HandleTypeDef}}\ *\ lcd);}
+\DoxyCodeLine{00108\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{lcd_8h_adff7b4c234b2bb99e34108012953af2f}{Lcd\_float}}(\mbox{\hyperlink{struct_lcd___handle_type_def}{Lcd\_HandleTypeDef}}\ *\ lcd,\ \textcolor{keywordtype}{float}\ number);}
+\DoxyCodeLine{00113\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{lcd_8h_aeb7d8cf010d0431082793c35d2f3986a}{Lcd\_int}}(\mbox{\hyperlink{struct_lcd___handle_type_def}{Lcd\_HandleTypeDef}}\ *\ lcd,\ \textcolor{keywordtype}{int}\ number);}
+\DoxyCodeLine{00118\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{lcd_8h_a41b19f1767241abaad51ba81820a1f8b}{Lcd\_string}}(\mbox{\hyperlink{struct_lcd___handle_type_def}{Lcd\_HandleTypeDef}}\ *\ lcd,\ \textcolor{keywordtype}{char}\ *\ \textcolor{keywordtype}{string});}
+\DoxyCodeLine{00124\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{lcd_8h_ae31b55ceec6ac19f04e4f8afe641d304}{Lcd\_cursor}}(\mbox{\hyperlink{struct_lcd___handle_type_def}{Lcd\_HandleTypeDef}}\ *\ lcd,\ uint8\_t\ row,\ uint8\_t\ col);}
+\DoxyCodeLine{00127\ \textcolor{comment}{//\ UStawienie\ wykorzystywanych\ Pinów.\ Ustawienie\ trybu\ pracy.}}
+\DoxyCodeLine{00129\ \textcolor{comment}{}\mbox{\hyperlink{struct_lcd___handle_type_def}{Lcd\_HandleTypeDef}}\ \mbox{\hyperlink{lcd_8h_a555f8cc26de31bbf138597e8a658d43f}{Lcd\_create}}(}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{lcd_8h_a5032730cd6aec5706ab225bf2693521d}{Lcd\_PortType}}\ port[],\ \mbox{\hyperlink{lcd_8h_a52d3b2f0ccdbb6bacc93c0d892c3a65e}{Lcd\_PinType}}\ pin[],}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{lcd_8h_a5032730cd6aec5706ab225bf2693521d}{Lcd\_PortType}}\ rs\_port,\ \mbox{\hyperlink{lcd_8h_a52d3b2f0ccdbb6bacc93c0d892c3a65e}{Lcd\_PinType}}\ rs\_pin,}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{lcd_8h_a5032730cd6aec5706ab225bf2693521d}{Lcd\_PortType}}\ en\_port,\ \mbox{\hyperlink{lcd_8h_a52d3b2f0ccdbb6bacc93c0d892c3a65e}{Lcd\_PinType}}\ en\_pin,\ \mbox{\hyperlink{lcd_8h_a3f91f51a22930c98fed044e5c3c6da4d}{Lcd\_ModeTypeDef}}\ mode);}
+\DoxyCodeLine{00133\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{lcd_8h_aad2da0b28baec7977d14487555a6d7f0}{Lcd\_define\_char}}(\mbox{\hyperlink{struct_lcd___handle_type_def}{Lcd\_HandleTypeDef}}\ *\ lcd,\ uint8\_t\ code,\ uint8\_t\ bitmap[]);}
+\DoxyCodeLine{00137\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{lcd_8h_ad2be8694070f64fe09c1e35469a568b6}{Lcd\_clear}}(\mbox{\hyperlink{struct_lcd___handle_type_def}{Lcd\_HandleTypeDef}}\ *\ lcd);}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00139\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ LCD\_H\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}
